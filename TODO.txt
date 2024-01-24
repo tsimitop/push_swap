@@ -1,0 +1,8 @@
+commands
+stacks
+checks
+    ints
+    no dups
+turn into ints
+Makefile
+sorting
