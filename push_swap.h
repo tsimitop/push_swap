@@ -7,11 +7,12 @@
 
 
 /*struct nodes*/
-typedef struct	stack_node
+typedef struct	t_node
 {
-	int					*integer;
-	struct stack_node	*next;
-	struct stack_node	*prev;
-}				stack_node
+	int				*nbr;
+	int				*index;
+	struct t_node	*next;
+	struct t_node	*prev;
+}				t_node;
 
 #endif

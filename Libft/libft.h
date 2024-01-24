@@ -71,7 +71,7 @@ void	ft_putnbr_fd(int n, int fd);
 
 /*BONUS list functions & node representation*/
 
-typedef struct	s_list
+typedef struct	t_list
 {
 	void			*content;
 	struct s_list	*next;
