@@ -1,8 +1,8 @@
 commands
-stacks
-checks
-    ints
-    no dups
-turn into ints
-Makefile
+ΟΚ? stacks
+OK? checks
+OK?    ints
+OK?    no dups
+ΟΚ? turn into ints
+OK? Makefile
 sorting

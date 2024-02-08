@@ -3,7 +3,7 @@
 
 // # include "/workspaces/PUSH/Libft/libft.h"
 // # include "/Users/tsimitop/Documents/Testing/PUSH/Libft/libft.h"
-# include "Libft/libft.h"
+# include "libft.h"
 
 /*struct nodes*/
 typedef struct	t_node
@@ -23,9 +23,11 @@ typedef struct	t_stack
 }				t_stack;
 
 /*utils*/
-void	delete_tmp(void *tmp);
-void	ft_ps_delone(t_node *lst, void (*del)(void*));
+// void	delete_tmp(void *tmp);
+// void	ft_ps_delone(t_node *lst, void (*del)(void*));
 char	space(char *str);
+int		check_int(char *str);
+int		check_dup(char **argv_split)
 
 /*commands*/
 

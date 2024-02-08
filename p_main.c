@@ -1,4 +1,5 @@
 #include "push_swap.h"
+# include "libft.h"
 
 char	*new_atoi(const char *str);
 
@@ -25,18 +26,23 @@ int main(int argc, char **argv)
 		{
 			// if (*argv_split == ' ') //check if int
 			// 	i++;
-			digit = ft_atoi(argv_split[i]);
-			if (A_stack.head == NULL)
-				A_stack.head->nbr = digit;
-			else
+			if (check_int(argv_split[i]) == 0 && check_dup(argv_split[i]) == 0)
 			{
-				temp = A_stack.head;
-				A_stack.head->nbr = digit;
-				A_stack.head->next = temp;
+				digit = ft_atoi(argv_split[i]);
+				if (A_stack.head == NULL)
+					A_stack.head->nbr = digit;
+				else
+				{
+					temp = A_stack.head;
+					A_stack.head->nbr = digit;
+					A_stack.head->next = temp;
+				}
+				// new_split = new_atoi(argv_split[i]);
+				i++;
+				// A_stack.size = i;
 			}
-			// new_split = new_atoi(argv_split[i]);
-			i++;
-			// A_stack.size = i;
+			else
+				exit;
 		}
 		free(argv_split);
 	}
