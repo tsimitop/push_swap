@@ -27,10 +27,24 @@ typedef struct	t_stack
 // void	ft_ps_delone(t_node *lst, void (*del)(void*));
 char	space(char *str);
 int		check_int(char *str);
-int		check_dup(char **argv_split)
+int		check_dup(char **argv_split);
+
 
 /*commands*/
 
+void	sa(t_stack *stack);
+void	sb(t_stack *stack);
+void	ss(t_stack *stack_A, t_stack *stack_B);
 
+void	pa(t_stack *stack_A, t_stack *stack_B);
+void	pb(t_stack *stack_A, t_stack *stack_B);
+
+void	ra(t_stack *stack_A);
+void	rb(t_stack *stack_B);
+void	rr(t_stack *stack_A, t_stack *stack_B);
+
+void	rra(t_stack *stack_A);
+void	rrb(t_stack *stack_B);
+void	rrr(t_stack *stack_A, t_stack *stack_B);
 
 #endif

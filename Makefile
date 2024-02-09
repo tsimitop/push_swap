@@ -12,7 +12,12 @@ LIBS = libft.h push_swap.h
 
 NAME = push_swap.a
 
-SRC = commands.c p_main.c
+SRC =	p_main.c\
+		checks.c\
+		commands_pa_pb.c\
+		commands_sa_sb_ss.c\
+		commands_ra_rb_rr.c \
+		commands_rra_rrb_rrr.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -41,8 +46,8 @@ re : fclean all
 ################################################################################
 
 # LIBFT1 = ./Libft/libft.a
-LIBFT_OBJ_DIR = Libft/obj/
-LIBFT_SRC_DIR = Libft/
+# LIBFT_OBJ_DIR = Libft/obj/
+# LIBFT_SRC_DIR = Libft/
 
 # $(LIBFT_OBJ_DIR)%.o: $(LIBFT_SRC_DIR)%.c
 # 	@mkdir -p $(LIBFT_OBJ_DIR)
