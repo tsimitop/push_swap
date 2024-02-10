@@ -1,5 +1,6 @@
 OK? commands
 ΟΚ? stacks
+set indexes
 OK? checks
 OK?    ints
 OK?    no dups

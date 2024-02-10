@@ -1,5 +1,4 @@
 #include "push_swap.h"
-# include "libft.h"
 
 char	*new_atoi(const char *str);
 
@@ -49,6 +48,7 @@ int main(int argc, char **argv)
 			}
 			else
 				exit (-1);
+			// set indexes
 		}
 		free(argv_split);
 		// free(temp);
@@ -56,32 +56,16 @@ int main(int argc, char **argv)
 	return (0);
 }
 
-// char	*new_atoi(const char *str)
-// {
-// 	int		i;
-// 	int		sign;
-// 	int		result;
-// 	char	*new_str;
+t_stack	*index_assign(t_stack *stack_A)
+{
+	t_node	*follow;
+	int		i;
 
-// 	i = 0;
-// 	sign = 1;
-// 	result = 0;
-// 	new_str = str;
-// 	while (str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-// 		|| str[i] == '\f' || str[i] == ' ' || str[i] == '\r')
-// 		i++;
-// 	if (str[i] == '-' || str[i] == '+')
-// 	{
-// 		if (str[i] == '-' || str[i] == '+')
-// 			if (str[i] == '-')
-// 				sign = -1;
-// 		i++;
-// 	}
-// 	while (str[i] >= '0' && str[i] <= '9')
-// 	{
-// 		result = result * 10 + str[i] - '0';
-// 		*new_str++ = '\0';
-// 		i++;
-// 	}
-// 	return (*new_str);
-// }
+	follow = stack_A->head;
+	i = stack_A->head->nbr;
+	while (follow->next != NULL)
+	{
+		if (stack_A->head->nbr < i)
+			i = stack_A->head->nbr;
+	}
+}

@@ -54,12 +54,12 @@ re : fclean all
 # 	$(CC) $(CFLAGS) -c $< -o $@
 libft:
 	@cd Libft && make
-re_libft:
-	@cd Libft && make re
-clean_libft:
-	@cd Libft && make clean
-fclean_libft: clean_libft
-	@cd Libft && make fclean
+# re_libft:
+# 	@cd Libft && make re
+# clean_libft:
+# 	@cd Libft && make clean
+# fclean_libft: clean_libft
+# 	@cd Libft && make fclean
 #								#TODO na ta prostheso epano#
 ################################################################################
 #								TESTS AND NOTES								   #
@@ -69,4 +69,4 @@ executable : $(NAME)
 	@$(CC) $(DEBUG) $(CFLAGS) *.c -L. -lft -o a.out
 
 .PHONY :
-	all clean fclean re executable
+	all clean fclean re libft executable
