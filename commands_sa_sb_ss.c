@@ -8,12 +8,12 @@
 sa (swap a): Swap the first 2 elements at the top of stack a.
 Do nothing if there is only one or no elements.
 */
-void sa(t_stack *stack)
+void    sa(t_stack *stack_A)
 {
-    t_node *first = stack->head;
+    t_node *first = stack_A->head;
     t_node *second = first->next;
 
-	if (stack->head == NULL || stack->head->next == NULL)
+    if (stack_A->head == NULL || stack_A->head->next == NULL)
         return; // Do nothing if there is only one or no elements
 
     // Swap the first two elements
@@ -25,7 +25,7 @@ void sa(t_stack *stack)
     second->prev = first->prev;
     first->prev = second;
 
-    stack->head = second; // Update the head of the stack
+    stack_A->head = second; // Update the head of the stack
     // ft_ps_delone(first, delete_tmp);
     write(1, "sa\n", 3);
 }
@@ -39,24 +39,20 @@ void sa(t_stack *stack)
 sb (swap b): Swap the first 2 elements at the top of stack b.
 Do nothing if there is only one or no elements.
 */
-void    sb(t_stack *stack)
+void    sb(t_stack *stack_B)
 {
-    t_node *first = stack->head;
+    t_node *first = stack_B->head;
     t_node *second = first->next;
-
-	if (stack->head == NULL || stack->head->next == NULL)
+    if (stack_B->head == NULL || stack_B->head->next == NULL)
         return; // Do nothing if there is only one or no elements
-
     // Swap the first two elements
     first->next = second->next;
     second->next = first;
-
     if (first->next != NULL)
         first->next->prev = first;
     second->prev = first->prev;
     first->prev = second;
-
-    stack->head = second; // Update the head of the stack
+    stack_B->head = second; // Update the head of the stack
     // ft_ps_delone(first, delete_tmp);
     write(1, "sb\n", 3);
 }
@@ -65,7 +61,7 @@ void    sb(t_stack *stack)
 ////							BOTH STACKS									////
 ////////////////////////////////////////////////////////////////////////////////
 
-void    ss(t_stack *stack_A, t_stack *stack_B)
+void	ss(t_stack *stack_A, t_stack *stack_B)
 {
 	sa(stack_A);
 	sb(stack_B);

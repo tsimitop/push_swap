@@ -18,7 +18,6 @@ typedef struct	t_node
 typedef struct	t_stack
 {
 	t_node		*head;
-	// t_node		*head_B;
 	// size_t		size; //how many in the stack
 }				t_stack;
 
@@ -32,8 +31,8 @@ int		check_dup(char **argv_split);
 
 /*commands*/
 
-void	sa(t_stack *stack);
-void	sb(t_stack *stack);
+void	sa(t_stack *stack_Α);
+void	sb(t_stack *stack_Β);
 void	ss(t_stack *stack_A, t_stack *stack_B);
 
 void	pa(t_stack *stack_A, t_stack *stack_B);

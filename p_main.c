@@ -32,6 +32,7 @@ int main(int argc, char **argv)
 				digit = ft_atoi(argv_split[i]);
 				new = (t_node *)ft_calloc(1, sizeof(t_node));
 				new->nbr = digit;
+				new->index = -1;
 				new->next = NULL;
 				new->prev = NULL;
 				if (A_stack.head == NULL)
@@ -56,16 +57,79 @@ int main(int argc, char **argv)
 	return (0);
 }
 
+// t_stack	*index_assign(t_stack *stack_A)
+// {
+// 	t_node	*follow;
+// 	t_node	*iterate;
+// 	t_node	*smallest;
+// 	int		i;
+
+// 	follow = stack_A->head;
+// 	i = stack_A->head->nbr;
+// 	smallest = stack_A->head;
+// 	while (follow->next != NULL)
+// 	{
+// 		if (stack_A->head->nbr < i)
+// 		{
+// 			i = stack_A->head->nbr;
+// 			i++;
+// 		}
+// 	}
+// 	iterate = stack_A->head;
+// 	while (iterate->next->index != -1 && iterate->next->index)
+// 	{
+// 		iterate = iterate->next;
+// 	}
+// 	if (iterate->index == -1)
+// 		index_assign(stack_A);
+// 	return (stack_A);
+// }
+
+/*
+checks which nbr is smallest, gives it index 0, then gradually assigns the next
+index to the next largest nbr until all indeces are assigned a non -1 value
+*/
 t_stack	*index_assign(t_stack *stack_A)
 {
-	t_node	*follow;
-	int		i;
+	t_node		*smallest;
+	t_node		*iterate;
+	t_node		*len;
+	t_node		*current;
+	int			value;
+	int			stack_length;
+	static int	gradual;
 
-	follow = stack_A->head;
-	i = stack_A->head->nbr;
-	while (follow->next != NULL)
+
+	stack_length = 0;
+	gradual = 0;
+	len = stack_A->head;
+	current = stack_A->head;
+	while (len->next != NULL)
 	{
-		if (stack_A->head->nbr < i)
-			i = stack_A->head->nbr;
+		len=len->next;
+		stack_length++;
 	}
+	smallest = stack_A->head;
+	iterate = stack_A->head;
+	value = stack_A->head->nbr;
+	while (iterate->next != NULL) //iterate->index == -1 && 
+	{
+		if (value > iterate->nbr)
+		{
+			value = iterate->nbr;
+			smallest = iterate;
+		}
+		iterate = iterate->next;
+	}
+	smallest->index = gradual;
+	gradual++;
+	// while (stack_length-- > 0)
+	// {
+	// 	index_assign(stack_A);
+	// }
+	while (current != NULL)
+	{
+		if (current->index)
+	}
+	return (stack_A);
 }
