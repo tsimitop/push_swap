@@ -10,7 +10,7 @@ typedef struct	t_node
 {
 	// char			*init_inp;
 	int				nbr;
-	int				index;
+	unsigned int	index;
 	struct t_node	*next;
 	struct t_node	*prev;
 }				t_node;

@@ -57,58 +57,63 @@ int main(int argc, char **argv)
 	return (0);
 }
 
-// t_stack	*index_assign(t_stack *stack_A)
-// {
-// 	t_node	*follow;
-// 	t_node	*iterate;
-// 	t_node	*smallest;
-// 	int		i;
-
-// 	follow = stack_A->head;
-// 	i = stack_A->head->nbr;
-// 	smallest = stack_A->head;
-// 	while (follow->next != NULL)
-// 	{
-// 		if (stack_A->head->nbr < i)
-// 		{
-// 			i = stack_A->head->nbr;
-// 			i++;
-// 		}
-// 	}
-// 	iterate = stack_A->head;
-// 	while (iterate->next->index != -1 && iterate->next->index)
-// 	{
-// 		iterate = iterate->next;
-// 	}
-// 	if (iterate->index == -1)
-// 		index_assign(stack_A);
-// 	return (stack_A);
-// }
-
 /*
 checks which nbr is smallest, gives it index 0, then gradually assigns the next
 index to the next largest nbr until all indeces are assigned a non -1 value
 */
-t_stack	*index_assign(t_stack *stack_A)
+// t_stack	*index_assign(t_stack *stack_A)
+// {
+// 	t_node		*smallest;
+// 	t_node		*iterate;
+// 	t_node		*len;
+// 	t_node		*current;
+// 	int			value;
+// 	int			stack_length;
+// 	static int	gradual;
+
+
+// 	stack_length = 0;
+// 	gradual = 0;
+// 	len = stack_A->head;
+// 	current = stack_A->head;
+// 	smallest = stack_A->head;
+// 	iterate = stack_A->head;
+// 	value = stack_A->head->nbr;
+// 	while (len->next != NULL)
+// 	{
+// 		len=len->next;
+// 		stack_length++;
+// 	}
+// 	while (iterate->next != NULL) //iterate->index == -1 && 
+// 	{
+// 		if (value > iterate->nbr)
+// 		{
+// 			value = iterate->nbr;
+// 			smallest = iterate;
+// 		}
+// 		iterate = iterate->next;
+// 	}
+// 	smallest->index = gradual;
+// 	gradual++;
+// 	while (stack_length-- > 0)
+// 	{
+// 		index_assign(stack_A);
+// 	}
+// 	// while (current != NULL)
+// 	// {
+// 	// 	if (current->index)
+// 	// }
+// 	return (stack_A);
+// }
+
+t_node	*find_smallest(t_stack *stack_A)
 {
 	t_node		*smallest;
 	t_node		*iterate;
-	t_node		*len;
 	t_node		*current;
 	int			value;
-	int			stack_length;
-	static int	gradual;
 
-
-	stack_length = 0;
-	gradual = 0;
-	len = stack_A->head;
 	current = stack_A->head;
-	while (len->next != NULL)
-	{
-		len=len->next;
-		stack_length++;
-	}
 	smallest = stack_A->head;
 	iterate = stack_A->head;
 	value = stack_A->head->nbr;
@@ -121,15 +126,101 @@ t_stack	*index_assign(t_stack *stack_A)
 		}
 		iterate = iterate->next;
 	}
-	smallest->index = gradual;
-	gradual++;
-	// while (stack_length-- > 0)
-	// {
-	// 	index_assign(stack_A);
-	// }
-	while (current != NULL)
+	smallest->index = 0;
+	return (smallest);
+}
+
+t_node	*find_biggest(t_stack *stack_A)
+{
+	t_node			*biggest;
+	t_node			*iterate;
+	t_node			*current;
+	unsigned int	value;
+
+	current = stack_A->head;
+	biggest = stack_A->head;
+	iterate = stack_A->head;
+	// value = 0;
+	value = stack_A->head->nbr;
+	while (iterate->next != NULL) //iterate->index == -1 && 
 	{
-		if (current->index)
+		if (value < iterate->nbr)
+		{
+			value = iterate->nbr;
+			biggest = iterate;
+		}
+		iterate = iterate->next;
 	}
+	biggest->index = 4294967295;
+	return (biggest);
+}
+
+int	if_idx_minus(t_stack *stack_A)
+{
+	t_node	*iterate;
+
+	iterate = stack_A->head;
+	while (iterate->index != -1 && iterate->next != NULL)
+		iterate = iterate->next;
+	if (iterate->index == -1)
+		return (-1);
+	else
+		return (0);
+}
+
+unsigned int	stack_length(t_stack *stack_A)
+{
+	t_node			*iterate;
+	unsigned int	ui;
+
+	ui = 0;
+	iterate = stack_A->head;
+	while (iterate->next != NULL)
+	{
+		iterate = iterate->next;
+		ui++;
+	}
+	return (ui);
+}
+
+t_node	*last_node(t_stack *stack_A)
+{
+	t_node	*last;
+
+	last = stack_A->head;
+	while (last->next != NULL)
+		last = last->next;
+	return (last);
+}
+
+t_stack	*assign_idx(t_stack *stack_A) //, t_node *call_assign(t_node *small)
+{
+	// t_node			*biggest;
+	static t_node	*smallest;
+	t_node			*current;
+	unsigned int	ui;
+	t_node			*first_small;
+	t_node			*second_small;
+	// unsigned int	decrease;
+
+	first_small = stack_A->head;
+	second_small = last_node(stack_A);
+	ui = stack_length(stack_A);
+	// biggest = find_biggest(stack_A);
+	current = find_biggest(stack_A);
+	smallest = find_smallest(stack_A);
+	while (ui-- > 0 && smallest->nbr < current->nbr)
+	{
+		//if (current->nbr > current->next->nbr) //TODO
+		current = current->next;				//TODO
+	}
+	if (if_idx_minus(stack_A) == -1)
+		assign_idx(stack_A);
 	return (stack_A);
 }
+
+// t_node	*call_assign(t_node *small)
+// {
+// 	return (small);
+// }
+
