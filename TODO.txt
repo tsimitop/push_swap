@@ -7,3 +7,7 @@ OK?    no dups
 ΟΚ? turn into ints
 OK? Makefile
 sorting
+
+
+na do ti paizei me libft
+manage errors
