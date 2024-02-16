@@ -6,11 +6,14 @@
 #    By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 20:13:13 by tsimitop          #+#    #+#              #
-#    Updated: 2023/10/28 13:43:29 by tsimitop         ###   ########.fr        #
+#    Updated: 2024/02/16 14:19:00 by tsimitop         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
 
 SRC = ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 ft_memset.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_tolower.c ft_toupper.c \
@@ -24,12 +27,9 @@ ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 # OBJ = $(SRC:.c=.o)
 
 OBJ_DIR = objects/
-OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
+OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 all : $(NAME)
-
-# $(NAME) : $(OBJ)
-# 	@ar rc $(NAME) $(OBJ)
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)

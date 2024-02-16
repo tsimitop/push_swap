@@ -11,3 +11,8 @@ sorting
 
 na do ti paizei me libft
 manage errors
+protect mallocs callocs
+remove printf library
+
+Makefile
+	does not run libft rule unless forced (make -B)

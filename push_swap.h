@@ -4,6 +4,7 @@
 // # include "/workspaces/PUSH/Libft/libft.h"
 // # include "/Users/tsimitop/Documents/Testing/PUSH/Libft/libft.h"
 # include "libft.h"
+#include <stdio.h>
 
 /*struct nodes*/
 typedef struct	t_node
@@ -25,7 +26,7 @@ typedef struct	t_stack
 /*utils*/
 // void	delete_tmp(void *tmp);
 // void	ft_ps_delone(t_node *lst, void (*del)(void*));
-t_stack	*initialise_stack(t_stack *stack, char argv_split);
+t_stack	*initialise_stack(t_stack *stack, char *argv_split);
 char	space(char *str);
 int		check_int(char *str);
 int		check_dup(char **argv_split);

@@ -5,7 +5,7 @@ CC = gcc
 DEBUG = -g
 CFLAGS = -Wall -Wextra -Werror
 LIBS = libft.h push_swap.h
-LIBFT_PATH = ./Libft
+LIBFT_PATH = $(shell pwd)/Libft
 
 ################################################################################
 #							PUSH_SWAP MANDATORY								   #
@@ -19,7 +19,8 @@ SRC =	p_main.c\
 		commands_sa_sb_ss.c\
 		commands_ra_rb_rr.c \
 		commands_rra_rrb_rrr.c\
-		index.c
+		index.c\
+		initialise.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -28,7 +29,7 @@ all : libft $(NAME)
 $(NAME) : libft $(OBJ) #########################
 	@ar rc $(NAME) $(OBJ)
 
-$(OBJ) : %.o : %.c push_swap.h
+$(OBJ) : %.o : %.c push_swap.h $(LIBFT_PATH)/libft.h
 	@$(CC) -c $(CFLAGS) -I$(LIBFT_PATH) $< -o $@
 
 clean :
@@ -36,11 +37,19 @@ clean :
 	@cd $(LIBFT_PATH) && make clean
 
 fclean : clean
+	@echo "Removing $(NAME)"
 	@rm -f $(NAME)
+	@echo "Removed $(NAME)"
+	@echo "Removing libft.a"
 	@rm -f libft.a
-#	@rm -f libft.h
-	@rm -f a.out
+	@echo "Removed libft.a"
+	@echo "Removing libft.h"
+	@rm -f libft.h
+	@echo "Removed libft.h"
+	@echo "Cleaning $(LIBFT_PATH)"
 	@cd $(LIBFT_PATH) && make fclean
+	@echo "Cleaned $(LIBFT_PATH)"
+#	@rm -f a.out
 
 re : fclean all
 
@@ -48,30 +57,20 @@ re : fclean all
 #									LIBFT									   #
 ################################################################################
 
-# LIBFT1 = ./Libft/libft.a
-# LIBFT_OBJ_DIR = Libft/obj/
-# LIBFT_SRC_DIR = Libft/
-
-# $(LIBFT_OBJ_DIR)%.o: $(LIBFT_SRC_DIR)%.c
-# 	@mkdir -p $(LIBFT_OBJ_DIR)
-# 	$(CC) $(CFLAGS) -c $< -o $@
 libft:
+	@echo "Building libft..."
 	@cd $(LIBFT_PATH) && make
-# re_libft:
-# 	@cd Libft && make re
-# clean_libft:
-# 	@cd Libft && make clean
-# fclean_libft: clean_libft
-# 	@cd Libft && make fclean
+	@echo "Built libft"
+
 #								#TODO na ta prostheso epano#
 ################################################################################
 #								TESTS AND NOTES								   #
 ################################################################################
 
 executable : $(NAME)
-#	@$(CC) $(DEBUG) $(CFLAGS) *.c -L. -lft -o a.out
+	@$(CC) $(DEBUG) $(CFLAGS) *.c -L. -lft -o a.out
+#	@$(CC) $(DEBUG) $(CFLAGS) *.c -I$(LIBFT_PATH) -L$(LIBFT_PATH) -lft -o a.out
 #windows
-	@$(CC) $(DEBUG) $(CFLAGS) *.c -I$(LIBFT_PATH) -L$(LIBFT_PATH) -lft -o a.out
 
 .PHONY :
 	all clean fclean re libft executable
