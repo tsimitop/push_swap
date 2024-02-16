@@ -9,10 +9,20 @@ OK? Makefile
 sorting
 
 
-na do ti paizei me libft
 manage errors
-protect mallocs callocs
-remove printf library
+	protect mallocs callocs
 
 Makefile
+na do ti paizei me libft
 	does not run libft rule unless forced (make -B)
+	check rm -f before evals
+
+
+
+
+important notes
+	segfault stops after adding
+		while (iterate->index != minus && iterate->next != NULL)
+	->next
+	in index.c
+	output is still wrong

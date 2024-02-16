@@ -26,6 +26,7 @@ typedef struct	t_stack
 /*utils*/
 // void	delete_tmp(void *tmp);
 // void	ft_ps_delone(t_node *lst, void (*del)(void*));
+void	make_index_string(t_stack *A_stack, char **argv);
 t_stack	*initialise_stack(t_stack *stack, char *argv_split);
 char	space(char *str);
 int		check_int(char *str);
@@ -54,12 +55,13 @@ void	rrr(t_stack *stack_A, t_stack *stack_B);
 
 t_node			*find_smallest(t_stack *stack_A);
 t_node			*find_biggest(t_stack *stack_A);
+// int				if_used(t_stack *stack_A);
 int				if_idx_minus(t_stack *stack_A);
 unsigned int	stack_length(t_stack *stack);
-t_node			*last_node(t_stack *stack_A);
-t_node			*first_half(t_node *smallest, t_stack *stack_A);
-t_node			*second_half(t_node *smallest);
-t_node			*compare_small(t_node *small_first, t_node *small_second);
-t_stack			*assign_idx(t_stack *stack_A, t_node *small);
+// t_node			*last_node(t_stack *stack_A);
+// t_node			*first_half(t_node *smallest, t_stack *stack_A);
+// t_node			*second_half(t_node *smallest);
+// t_node			*compare_small(t_node *small_first, t_node *small_second);
+t_stack			*assign_idx(t_stack *stack_A);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 20:13:13 by tsimitop          #+#    #+#              #
-#    Updated: 2024/02/16 14:19:00 by tsimitop         ###   ########.fr        #
+#    Updated: 2024/02/16 17:24:44 by tsimitop         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,6 @@ all : $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	cp libft.h ../
-	cp $(NAME) ../
 
 # $(OBJ) : %.o : %.c
 # 	@gcc -c -Wall -Wextra -Werror $< -o $@
