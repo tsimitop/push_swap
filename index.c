@@ -25,7 +25,7 @@ t_node	*find_smallest(t_stack *stack_A)
 	return (smallest);
 }
 
-t_node	*find_biggest(t_stack *stack_A)
+t_node	*find_biggest_a(t_stack *stack_A)
 {
 	t_node			*biggest;
 	t_node			*iterate;
@@ -37,6 +37,32 @@ t_node	*find_biggest(t_stack *stack_A)
 	iterate = stack_A->head;
 	// value = 0;
 	value = stack_A->head->nbr;
+	while (iterate->next != NULL) //iterate->index == -1 && 
+	{
+		if (value < iterate->nbr)
+		{
+			value = iterate->nbr;
+			biggest = iterate;
+		}
+		iterate = iterate->next;
+	}
+	biggest->index = 4294967295;
+	biggest->used = 1;
+	return (biggest);
+}
+
+t_node	*find_biggest_b(t_stack *stack_B)
+{
+	t_node			*biggest;
+	t_node			*iterate;
+	t_node			*current;
+	int				value;
+
+	current = stack_B->head;
+	biggest = stack_B->head;
+	iterate = stack_B->head;
+	// value = 0;
+	value = stack_B->head->nbr;
 	while (iterate->next != NULL) //iterate->index == -1 && 
 	{
 		if (value < iterate->nbr)
@@ -105,6 +131,113 @@ printf("\t\tCURRENT NODE nbr value = %i\n", debugg->nbr);
 		debugg = debugg->next;
 	}
 	return (ui);
+}
+
+/*
+________________________________________________________________________________
+________________________________________________________________________________
+*/
+// t_stack	*assign_idx(t_stack *stack_A)
+// {
+// 	t_node	*iterate;
+// 	t_node	*smallest;
+// 	t_node	*restart;
+// 	t_node	*hold_small;
+// 	int		i;
+// 	int value;
+
+// 	i = 0;
+// 	value = if_idx_minus(stack_A);
+// 	while (value == -1)
+// 	{
+// 		check_node(stack_A);
+// 		iterate = stack_A->head;
+// 		smallest = stack_A->head;
+// 		restart = stack_A->head;
+// 		while (restart != NULL)
+// 		{
+// 			if (iterate->used == 0)
+// 			{
+// 				hold_small = iterate;
+// 				// handle_used(stack_A, iterate);
+// 				if (iterate->nbr < hold_small->nbr)
+// 					smallest = iterate;
+// 			}
+// 			iterate = iterate->next;
+// 			restart = restart->next;
+// 		}
+// 		if (smallest->index == (unsigned int)-1)
+// 			smallest->index = i;
+// 		if (smallest->used == 0)
+// 			smallest->used = 1;
+// 		i++;
+// 	value = if_idx_minus(stack_A);
+// printf("VALUE = %i", value);
+// printf("_______________________________smallest->index = %i\n", smallest->index);
+// printf("HHHHHHHHHEEEEEEEEEEEEEYYYYYYYYYYYYYYY\n");
+// 	}
+// 	return (stack_A);
+// }
+
+t_stack		 *assign_idx(t_stack *stack_A)
+{
+	t_node		*iterate;
+	t_node		*smallest;
+	int			i;
+
+	i = 0;
+	while (if_idx_minus(stack_A) == -1)
+	{
+		iterate = stack_A->head;
+		smallest = stack_A->head;
+		while (iterate != NULL)
+		{
+			if (iterate->nbr < smallest->nbr && iterate->used == 0)
+				smallest = iterate;
+			iterate = iterate->next;
+		}
+		assure_idx_values(smallest, i);
+		i++;
+	}
+	return (stack_A);
+}
+
+void	*assure_idx_values(t_node *smallest, int i)
+{
+	if (smallest->index == (unsigned int)-1)
+		smallest->index = i;
+	if (smallest->used == 0)
+		smallest->used = 1;
+	return (0);
+}
+
+// t_node	*handle_used(t_stack *stack_A, t_node *iterate)
+// {
+// 	t_node *check_used;
+// 	t_node *keep;
+
+// 	check_used = iterate;
+// 	keep = iterate;
+// 	while (check_used != NULL)
+// 	{
+// 		if (if_used(stack_A) == 0)
+// 		{
+// 			if (keep->nbr > check_used->nbr)
+// 				keep = check_used;
+// 		}
+// 		check_used = check_used->next;
+// 	}
+// 	return (keep);
+// }
+
+void check_node(t_stack *stack_A)
+{
+	t_node *check = stack_A->head;
+	while (check != NULL)
+	{
+printf("\ncheck->nbr = %i\ncheck->index = %i\ncheck->used = %i\n", check->nbr, check->index, check->used);
+	check = check->next;
+	}
 }
 
 // t_node	*last_node(t_stack *stack_A)
@@ -216,68 +349,4 @@ printf("\t\tCURRENT NODE nbr value = %i\n", debugg->nbr);
 // 	return (stack_A);
 // }
 
-
-/*
-________________________________________________________________________________
-________________________________________________________________________________
-*/
-t_stack			*assign_idx(t_stack *stack_A)
-{
-	int	i;
-	t_node	*iterate;
-	t_node	*smallest;
-	unsigned int length;
-	unsigned int minus;
-	int typecast_l;
-	t_node *restart;
-	int		hold_value;
-	int		init_len;
-	t_node	*despiration;
-	int		do_again;
-
-	minus = -1;
-	i = 0;
-	length = stack_length(stack_A);
-	typecast_l = (int)length;
-	init_len = typecast_l; //NA TO SVISO, NA KANO STO ALLO TYPECAST
-printf("\t\t\t\ttypecast_l = %i\n", typecast_l);
-	do_again = if_idx_minus(stack_A);
-	while (do_again == -1)
-	{
-		iterate = stack_A->head;
-		smallest = stack_A->head;
-printf("_______________________________smallest->index = %i\n", smallest->index);
-		despiration = stack_A->head;
-		while (despiration != NULL)
-		{
-printf("typecast_l = %i\n", typecast_l);
-			restart = stack_A->head;
-			hold_value = iterate->used;
-			if (iterate->nbr < smallest->nbr && hold_value == 0)
-			{
-				smallest = iterate;
-printf("HHHHHHHHWWWWWWWWWWAAAAAAAAAAAA\n");
-			}
-			iterate = iterate->next;
-			despiration = despiration->next;
-		}
-		if (smallest->index == minus)
-		{
-printf("HELLO MINUS\n");
-printf("i value = %i\n", i);
-			smallest->index = i;
-printf("\nsmallest->nbr = %i\nsmallest->index = %i\nsmallest->used = %i\n", smallest->nbr, smallest->index, smallest->used);
-		}
-		if (smallest->used == 0)
-			smallest->used = 1;
-		do_again = if_idx_minus(stack_A);
-		i++;							///na to valo sto telos
-	}
-	t_node *check = stack_A->head;
-	while (check != NULL)
-	{
-printf("\ncheck->nbr = %i\ncheck->index = %i\ncheck->used = %i\n", check->nbr, check->index, check->used);
-	check = check->next;
-	}
-	return (stack_A);
-}
+// 	}

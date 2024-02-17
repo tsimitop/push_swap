@@ -24,7 +24,9 @@ SRC =	p_main.c\
 		commands_ra_rb_rr.c \
 		commands_rra_rrb_rrr.c\
 		index.c\
-		initialise.c
+		initialise.c\
+		sorting.c\
+		square_root.c
 
 OBJ = $(SRC:.c=.o)
 

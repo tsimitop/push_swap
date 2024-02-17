@@ -54,7 +54,7 @@ void	rrr(t_stack *stack_A, t_stack *stack_B);
 /*index*/
 
 t_node			*find_smallest(t_stack *stack_A);
-t_node			*find_biggest(t_stack *stack_A);
+t_node			*find_biggest_a(t_stack *stack_A);
 // int				if_used(t_stack *stack_A);
 int				if_idx_minus(t_stack *stack_A);
 unsigned int	stack_length(t_stack *stack);
@@ -63,5 +63,17 @@ unsigned int	stack_length(t_stack *stack);
 // t_node			*second_half(t_node *smallest);
 // t_node			*compare_small(t_node *small_first, t_node *small_second);
 t_stack			*assign_idx(t_stack *stack_A);
+void	*assure_idx_values(t_node *smallest, int i);
+// t_node	*handle_used(t_stack *stack_A, t_node *iterate);
+
+
+/*sorting*/
+
+t_node	*find_biggest_b(t_stack *stack_B);
+int		square_root(int number);
+
+
+/*extras*/
+void check_node(t_stack *stack_A);
 
 #endif
