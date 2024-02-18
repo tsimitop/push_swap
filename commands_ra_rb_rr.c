@@ -24,7 +24,7 @@ void	ra(t_stack *stack_A)
 	// temp->prev = NULL;
 	temp->next = stack_A->head;
 	// stack_A->head = stack_A->head->next;
-	stack_A->head->prev = temp; //if (stack_A->head != NULL)
+	// stack_A->head->prev = temp; //if (stack_A->head != NULL)
 	stack_A->head = temp;
     write(1, "ra\n", 3);
 }
@@ -54,7 +54,7 @@ void	rb(t_stack *stack_B)
 	// temp->prev = NULL;
 	temp->next = stack_B->head;
 	// stack_A->head = stack_A->head->next;
-	stack_B->head->prev = temp; //if (stack_A->head != NULL)
+	// stack_B->head->prev = temp; //if (stack_A->head != NULL)
 	stack_B->head = temp;
     write(1, "rb\n", 3);
 }

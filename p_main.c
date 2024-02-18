@@ -29,10 +29,9 @@ printf("argv[i] = %s\n", argv_split[i]);
 				return ; //exit (-1);
 			i++;
 		}
-		assign_idx(A_stack);
-printf("TEST MORE\n");
+		set_index(A_stack);
 		free(argv_split);
-printf("\nLAST CHECK FOR NODES");
+printf("\nLAST CHECK FOR NODES IN MAIN");
 check_node(A_stack);
 printf("DONE");
 }

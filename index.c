@@ -25,6 +25,32 @@ t_node	*find_smallest(t_stack *stack_A)
 	return (smallest);
 }
 
+
+t_node	*find_biggest(t_stack *stack_A)
+{
+	t_node			*biggest;
+	t_node			*iterate;
+	t_node			*current;
+	int				value;
+
+	current = stack_A->head;
+	biggest = stack_A->head;
+	iterate = stack_A->head;
+	// value = 0;
+	value = stack_A->head->nbr;
+	while (iterate->next != NULL) //iterate->index == -1 && 
+	{
+		if (value < iterate->nbr)
+		{
+			value = iterate->nbr;
+			biggest = iterate;
+		}
+		iterate = iterate->next;
+	}
+	return (biggest);
+}
+
+
 t_node	*find_biggest_a(t_stack *stack_A)
 {
 	t_node			*biggest;
@@ -82,7 +108,7 @@ int	if_used(t_stack *stack_A)
 	t_node	*iterate;
 	int		not_used;
 	unsigned int		length;
-printf("TEST MORE not_used\n");
+printf("TEST if_used\n");
 	not_used = 0;
 	iterate = stack_A->head;
 printf("iterate->used _________________ %i\n", iterate->used);
@@ -107,9 +133,14 @@ int	if_idx_minus(t_stack *stack_A)
 	unsigned int	minus;
 	minus = -1;
 	iterate = stack_A->head;
-printf("TEST MORE minus\n");
+printf("TEST idx minus\n");
+printf("iterate index head = %u\n", iterate->index);
 	while (iterate->index != minus && iterate->next != NULL)
+	{
+printf("iterate indexes = %u\n", iterate->index);
 		iterate = iterate->next;
+	}
+printf("iterate minus = %u\n", iterate->index);
 	if (iterate->index == minus)
 		return (-1);
 	else
@@ -125,7 +156,6 @@ unsigned int	stack_length(t_stack *stack)
 	iterate = stack->head;
 	while (iterate != NULL)
 	{
-printf("\t\tCURRENT NODE nbr value = %i\n", debugg->nbr);
 		iterate = iterate->next;
 		ui++;
 		debugg = debugg->next;
@@ -211,6 +241,76 @@ void	*assure_idx_values(t_node *smallest, int i)
 	return (0);
 }
 
+t_stack		 *assign_idx_try(t_stack *stack_A)
+{
+	t_node		*iterate;
+	t_node		*smallest;
+	t_node		*hold_value;
+	int			i;
+
+	i = 0;
+printf("______________________________________________________________\n");
+printf("if_idx_minus(stack_A) == %i\n", if_idx_minus(stack_A));
+printf("if_idx_minus(stack_A) == -1 ====== %i\n", if_idx_minus(stack_A) == -1);
+	while (if_idx_minus(stack_A) == -1)
+	{
+		iterate = stack_A->head;
+		smallest = first_used_zero(stack_A);
+		if (smallest == NULL)
+			break;
+		while (iterate != NULL)
+		{
+printf("address of iterate = %p\n", &iterate);
+printf("iterate->used = %i\n", iterate->used);
+			while (iterate->used != 0 && iterate != NULL)
+			{
+				iterate = iterate->next;
+				i++;
+			}
+			if (iterate && iterate->used == 0)
+				hold_value = iterate;
+			while (iterate->used == 0 && iterate != NULL)
+			{
+				if (smallest->nbr > hold_value->nbr)
+				{
+					smallest = hold_value;
+				}
+				if (iterate->nbr < smallest->nbr)
+				{
+					smallest = iterate;
+				}
+				iterate = iterate->next;
+printf("address of iterate DOWN = %p\n", &iterate);
+printf("address of smallest DOWN = %p\n", &smallest);
+printf("address of hold_value DOWN = %p\n", &hold_value);
+printf("smallest->nbr = %i\n", smallest->nbr);
+printf("\n\t\taddress of iterate->next DOWN = %p\n", &iterate->next);
+printf("\t\taddress of smallest->next DOWN = %p\n", &smallest->next);
+printf("\t\taddress of hold_value->next DOWN = %p\n", &hold_value->next);
+printf("\t\tsmallest->next->nbr = %i\n\n", smallest->nbr);
+			}
+		assure_idx_values(smallest, i);
+printf("SHIT\t\t\t\t\t\t\t\t\t\t\t\t\tSHIT\n");
+		}
+		i++;
+	}
+	return (stack_A);
+}
+
+t_node	*first_used_zero(t_stack *stack)
+{
+	t_node	*zero;
+	zero = stack->head;
+
+	while (zero != NULL)
+	{
+		if (zero->used == 0)
+			return (zero);
+		zero = zero->next;
+	}
+	return (NULL);
+}
+
 // t_node	*handle_used(t_stack *stack_A, t_node *iterate)
 // {
 // 	t_node *check_used;
@@ -240,15 +340,15 @@ printf("\ncheck->nbr = %i\ncheck->index = %i\ncheck->used = %i\n", check->nbr, c
 	}
 }
 
-// t_node	*last_node(t_stack *stack_A)
-// {
-// 	t_node	*last;
+t_node	*last_node(t_stack *stack_A)
+{
+	t_node	*last;
 
-// 	last = stack_A->head;
-// 	while (last->next != NULL)
-// 		last = last->next;
-// 	return (last);
-// }
+	last = stack_A->head;
+	while (last->next != NULL)
+		last = last->next;
+	return (last);
+}
 
 // t_node	*first_half(t_node *smallest, t_stack *stack_A)
 // {

@@ -20,10 +20,10 @@ void    sa(t_stack *stack_A)
     first->next = second->next;
     second->next = first;
 
-    if (first->next != NULL)
-        first->next->prev = first;
-    second->prev = first->prev;
-    first->prev = second;
+    // if (first->next != NULL)
+        // first->next->prev = first;
+    // second->prev = first->prev;
+    // first->prev = second;
 
     stack_A->head = second; // Update the head of the stack
     // ft_ps_delone(first, delete_tmp);
@@ -48,10 +48,10 @@ void    sb(t_stack *stack_B)
     // Swap the first two elements
     first->next = second->next;
     second->next = first;
-    if (first->next != NULL)
-        first->next->prev = first;
-    second->prev = first->prev;
-    first->prev = second;
+    // if (first->next != NULL)
+        // first->next->prev = first;
+    // second->prev = first->prev;
+    // first->prev = second;
     stack_B->head = second; // Update the head of the stack
     // ft_ps_delone(first, delete_tmp);
     write(1, "sb\n", 3);

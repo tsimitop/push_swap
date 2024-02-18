@@ -26,14 +26,15 @@ SRC =	p_main.c\
 		index.c\
 		initialise.c\
 		sorting.c\
-		square_root.c
+		square_root.c\
+		assignment.c
 
 OBJ = $(SRC:.c=.o)
 
 all : $(LIBFT) $(NAME)
 
 $(NAME) : $(OBJ)#########################
-	@$(CC) $^ $(LDFLAGS) -o $@
+	@$(CC) $(DEBUG) $^ $(LDFLAGS) -o $@
 
 $(OBJ) : %.o : %.c
 	@$(CC) -c $(CFLAGS) -I$(LIBFT_PATH) $< -o $@
