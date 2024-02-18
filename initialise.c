@@ -12,17 +12,17 @@ t_stack	*initialise_stack(t_stack *stack, char *argv_split)
 	if (!new)
 		return (0);
 	new->nbr = digit;
-printf("argv_split = %i\n", new->nbr);
+// printf("argv_split = %i\n", new->nbr);
 	new->index = -1;
 	new->used = 0;
 	new->next = NULL;
-	// new->prev = NULL;
+	new->prev = NULL;
 	if (stack->head == NULL)
 		stack->head = new;
 	else
 	{
 		new->next = stack->head;
-		// stack->head->prev = new;
+		stack->head->prev = new;
 		stack->head = new;
 	}
 	return(stack);

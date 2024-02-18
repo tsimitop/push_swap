@@ -30,7 +30,7 @@ void	array_to_index(int *arr_sort, t_stack *stack_A, int	length)
 			i++;
 			length--;
 		}
-printf("\t\t\ti = %i\n\t\t\tarr_sort[i] = %i\n\t\t\titerate->nbr = %i\n", i, arr_sort[i], iterate->nbr);
+// printf("\t\t\ti = %i\n\t\t\tarr_sort[i] = %i\n\t\t\titerate->nbr = %i\n", i, arr_sort[i], iterate->nbr);
 		if (arr_sort[i] == iterate->nbr)
 		{
 			iterate->index = i;
@@ -124,7 +124,7 @@ int	*bubble_sort(int *sorted_array, int length)
 }
 
 
-void	print_array(int *array, char* str)
+void	print_array(int *array, char* str) //DELETE FUNCTION
 {
 	int i = 0;
 

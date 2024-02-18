@@ -7,10 +7,11 @@ OK?    no dups
 ΟΚ? turn into ints
 OK? Makefile
 sorting
-
+is square root correct?
 
 manage errors
-	protect mallocs callocs
+	int too high/too low
+	not an int/invalid argument
 
 Makefile
 na do ti paizei me libft
@@ -21,8 +22,10 @@ na do ti paizei me libft
 
 
 important notes
-	segfault stops after adding
-		while (iterate->index != minus && iterate->next != NULL)
-	->next
-	in index.c
-	output is still wrong
+	na ftiakso ta prev
+	protect mallocs callocs
+	free
+
+NEXT STEP
+	sort 3 and seven
+	

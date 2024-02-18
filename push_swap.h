@@ -14,7 +14,7 @@ typedef struct	t_node
 	unsigned int	index;
 	int				used;
 	struct t_node	*next;
-	// struct t_node	*prev;
+	struct t_node	*prev;
 }				t_node;
 
 typedef struct	t_stack
@@ -53,20 +53,20 @@ void	rrr(t_stack *stack_A, t_stack *stack_B);
 
 /*index*/
 
-t_node			*find_smallest(t_stack *stack_A);
-t_node			*find_biggest_a(t_stack *stack_A);
+// t_node			*find_smallest(t_stack *stack_A);
+// t_node			*find_biggest_a(t_stack *stack_A);
 // int				if_used(t_stack *stack_A);
-int				if_idx_minus(t_stack *stack_A);
+// int				if_idx_minus(t_stack *stack_A);
 unsigned int	stack_length(t_stack *stack);
 t_node			*last_node(t_stack *stack_A);
 // t_node			*first_half(t_node *smallest, t_stack *stack_A);
 // t_node			*second_half(t_node *smallest);
 // t_node			*compare_small(t_node *small_first, t_node *small_second);
-t_stack			*assign_idx(t_stack *stack_A);
-void	*assure_idx_values(t_node *smallest, int i);
-t_node	*first_used_zero(t_stack *stack);
-t_stack		 *assign_idx_try(t_stack *stack_A);
-t_node	*find_biggest(t_stack *stack_A);
+// t_stack			*assign_idx(t_stack *stack_A);
+// void	*assure_idx_values(t_node *smallest, int i);
+// t_node	*first_used_zero(t_stack *stack);
+// t_stack		 *assign_idx_try(t_stack *stack_A);
+// t_node	*find_biggest(t_stack *stack_A);
 // void	stack_copy(t_stack *stack_A, int argc);
 // void	cp_top(t_stack *stack_A, t_stack *stack_B);
 // t_node	*handle_used(t_stack *stack_A, t_node *iterate);
@@ -85,10 +85,18 @@ void	print_array(int *array, char* str);
 /*sorting*/
 
 t_node	*find_biggest_b(t_stack *stack_B);
-// int		square_root(int number);
+int		square_root(int number);
+int	calculate_up(t_stack *stack_B, t_node *b_biggest);
+int	calculate_down(t_node *b_biggest);
+void	move_down(t_stack *stack_B, t_node *b_biggest);
+void	move_up(t_stack *stack_B, t_node *b_biggest);
+void	push_biggest_to_a(t_stack *stack_A, t_stack *stack_B);
+void	k_sort(t_stack *stack_A, t_stack *stack_B);
 
 
 /*extras*/
 void check_node(t_stack *stack_A);
+
+
 
 #endif

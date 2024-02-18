@@ -15,12 +15,12 @@ void	pa(t_stack *stack_A, t_stack *stack_B)
 	move = stack_B->head;
 	stack_B->head = stack_B->head->next;
 	if (stack_B->head != NULL)
-		// stack_B->head->prev = NULL;
-	// move->next->prev = NULL;
+		stack_B->head->prev = NULL;
+	move->next->prev = NULL;
 	move->next = stack_A->head;
-	// move->prev = NULL;
-	// if (stack_A->head != NULL)
-		// stack_A->head->prev = move;
+	move->prev = NULL;
+	if (stack_A->head != NULL)
+		stack_A->head->prev = move;
 	stack_A->head = move;
     write(1, "pa\n", 3);
 }
@@ -41,12 +41,12 @@ void	pb(t_stack *stack_A, t_stack *stack_B)
 	move = stack_A->head;
 	stack_A->head = stack_A->head->next;
 	if (stack_A->head != NULL)
-		// stack_A->head->prev = NULL;
-	// move->next->prev = NULL;
+		stack_A->head->prev = NULL;
+	move->next->prev = NULL;
 	move->next = stack_B->head;
-	// move->prev = NULL;
-	// if (stack_B->head != NULL)
-		// stack_B->head->prev = move;
+	move->prev = NULL;
+	if (stack_B->head != NULL)
+		stack_B->head->prev = move;
 	stack_B->head = move;
     write(1, "pb\n", 3);
 }
