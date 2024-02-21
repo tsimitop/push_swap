@@ -56,3 +56,33 @@ int	check_dup(char **argv_split)
 	}
 	return (0);
 }
+
+////////////////////////////////////////////////////////////////////////////////
+////								DEBUG									////
+////////////////////////////////////////////////////////////////////////////////
+
+void	check_stack(t_stack *stack)
+{
+	t_node	*iterate;
+
+	iterate = stack->head;
+	while (iterate != NULL)
+	{
+		printf("stack->node = %p\n", iterate);
+		printf("stack->node->index = %i\n", iterate->index);
+		printf("stack->node->nbr = %i\n", iterate->nbr);
+		printf("stack->node->next = %p\n", iterate->next);
+		printf("stack->node->prev = %p\n", iterate->prev);
+		iterate = iterate->next;
+	}
+}
+
+void check_node(t_stack *stack_A)
+{
+	t_node *check = stack_A->head;
+	while (check != NULL)
+	{
+printf("\ncheck->nbr = %i\ncheck->index = %i\ncheck->used = %i\n", check->nbr, check->index, check->used);
+	check = check->next;
+	}
+}

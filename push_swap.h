@@ -26,7 +26,7 @@ typedef struct	t_stack
 /*utils*/
 // void	delete_tmp(void *tmp);
 // void	ft_ps_delone(t_node *lst, void (*del)(void*));
-void	make_index_string(t_stack *A_stack, char **argv);
+t_stack	*make_index_string(t_stack *A_stack, char **argv);
 t_stack	*initialise_stack(t_stack *stack, char *argv_split);
 char	space(char *str);
 int		check_int(char *str);
@@ -92,10 +92,12 @@ void	move_down(t_stack *stack_B, t_node *b_biggest);
 void	move_up(t_stack *stack_B, t_node *b_biggest);
 void	push_biggest_to_a(t_stack *stack_A, t_stack *stack_B);
 void	k_sort(t_stack *stack_A, t_stack *stack_B);
+void	sort_3(t_stack *stack_A);
 
 
 /*extras*/
 void check_node(t_stack *stack_A);
+void	check_stack(t_stack *stack);
 
 
 

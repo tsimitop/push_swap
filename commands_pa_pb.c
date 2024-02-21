@@ -12,11 +12,20 @@ void	pa(t_stack *stack_A, t_stack *stack_B)
 {
 	t_node	*move;
 
+	if (!stack_B->head)
+	{
+		printf("B is empty...!");
+		return ;
+	}
 	move = stack_B->head;
-	stack_B->head = stack_B->head->next;
+	if (stack_B->head && stack_B->head->next)
+	{
+		stack_B->head = stack_B->head->next;
+		move->next->prev = NULL;
+	}
 	if (stack_B->head != NULL)
 		stack_B->head->prev = NULL;
-	move->next->prev = NULL;
+	
 	move->next = stack_A->head;
 	move->prev = NULL;
 	if (stack_A->head != NULL)
@@ -37,12 +46,17 @@ Do nothing if a is empty.
 void	pb(t_stack *stack_A, t_stack *stack_B)
 {
 	t_node	*move;
-
+	if (!stack_A->head)
+	{
+		printf("STACK A is empty!!");
+		return ;
+	}
 	move = stack_A->head;
-	stack_A->head = stack_A->head->next;
+	if (stack_A->head && stack_A->head->next)
+		stack_A->head = stack_A->head->next;
 	if (stack_A->head != NULL)
 		stack_A->head->prev = NULL;
-	move->next->prev = NULL;
+	// move->next->prev = NULL;
 	move->next = stack_B->head;
 	move->prev = NULL;
 	if (stack_B->head != NULL)

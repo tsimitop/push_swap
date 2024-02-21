@@ -43,10 +43,10 @@ void	array_to_index(int *arr_sort, t_stack *stack_A, int	length)
 int	*copy_array(t_stack *stack_A, int length)
 {
 	t_node	*iterate;
-	int i;
+	// int i;
 	int	*array;
 
-	i = 0;
+	// i = 0;
 	array = ft_calloc(length + 1, sizeof(int));				//FREE!!!
 	if (!array)
 		return (NULL);

@@ -3,7 +3,7 @@
 ################################################################################
 CC = gcc
 DEBUG = -g
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 LIBS = libft.h push_swap.h
 LIBFT_PATH = ./Libft
 LIBFT := $(LIBFT_PATH)/libft.a
@@ -27,7 +27,8 @@ SRC =	p_main.c\
 		initialise.c\
 		sorting.c\
 		square_root.c\
-		assignment.c
+		assignment.c\
+		3_7_sort.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -71,13 +71,25 @@ void	k_sort(t_stack *stack_A, t_stack *stack_B)
 
 	id = 0;
 	formula = ((int)square_root(stack_length(stack_A)) * 14 / 10);
+printf("formula = %i\n", formula);
 	iterate = stack_A->head;
 	while (iterate != NULL)
 	{
+// printf("iterate->index <= id \t|\t %i <= %i\n", iterate->index, id);
 		if (iterate->index <= id)
 		{
+
+// check_stack(stack_A);
+// check_stack(stack_B);
 			pb(stack_A, stack_B);
+// check_stack(stack_A);
+// check_stack(stack_B);
+// printf("stack B->head->nbr = %p\n", &stack_B->head->nbr);
+// printf("stack B->head->next->nbr = %p\n", &stack_B->head->next->nbr);
+
+printf("_________________________________________________________________\n");
 			rb(stack_B);
+check_stack(stack_B);
 			id++;
 		}
 		else if (iterate->index <= id + formula)
@@ -89,5 +101,5 @@ void	k_sort(t_stack *stack_A, t_stack *stack_B)
 			ra(stack_A);
 		iterate = (stack_A->head);
 	}
-	push_biggest_to_a(stack_A, stack_B); //other function;
+	// push_biggest_to_a(stack_A, stack_B); //other function;
 }

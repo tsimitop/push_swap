@@ -42,20 +42,30 @@ void	rb(t_stack *stack_B)
 {
 	t_node	*temp;
 	t_node	*last;
-
+	
 	temp = stack_B->head;
 	last = NULL;
-	while (temp->next != NULL)
+	while (temp && temp->next != NULL)
 	{
 		last = temp;
 		temp = temp->next;
 	}
-	last->next = NULL;
-	temp->prev = NULL;
-	temp->next = stack_B->head;
-	stack_B->head = stack_B->head->next;
-	stack_B->head->prev = temp; //if (stack_A->head != NULL)
-	stack_B->head = temp;
+	// last->next = NULL;
+	
+	if (temp)
+	{
+		temp->prev = NULL;
+		temp->next = stack_B->head;
+	}
+	else
+		temp = stack_B->head;
+	// temp->next = stack_B->head;
+	if (stack_B->head)
+	{
+		stack_B->head = stack_B->head->next;
+		stack_B->head->prev = temp; //if (stack_A->head != NULL)
+		stack_B->head = temp;
+	}
     write(1, "rb\n", 3);
 }
 

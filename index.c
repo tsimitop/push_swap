@@ -81,10 +81,10 @@ t_node	*find_biggest_b(t_stack *stack_B)
 {
 	t_node			*biggest;
 	t_node			*iterate;
-	t_node			*current;
+	// t_node			*current;
 	int				value;
 
-	current = stack_B->head;
+	// current = stack_B->head;
 	biggest = stack_B->head;
 	iterate = stack_B->head;
 	// value = 0;
@@ -330,15 +330,7 @@ ________________________________________________________________________________
 // 	return (keep);
 // }
 
-void check_node(t_stack *stack_A)
-{
-	t_node *check = stack_A->head;
-	while (check != NULL)
-	{
-printf("\ncheck->nbr = %i\ncheck->index = %i\ncheck->used = %i\n", check->nbr, check->index, check->used);
-	check = check->next;
-	}
-}
+
 
 t_node	*last_node(t_stack *stack_A)
 {
