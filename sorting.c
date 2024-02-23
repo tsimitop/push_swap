@@ -20,7 +20,7 @@ int	calculate_up(t_stack *stack_B, t_node *b_biggest)
 		iterate = iterate->prev;
 		moves_up++;
 	}
-printf("\tmoves up = % i\n", moves_up);
+// printf("\tmoves up = % i\n", moves_up);
 	// exit(-1);
 
 	return (moves_up);
@@ -40,7 +40,7 @@ int	calculate_down(t_node *b_biggest)
 		moves_down++;
 	}
 	moves_down++;
-printf("\tmoves down = % i\n", moves_down);
+// printf("\tmoves down = % i\n", moves_down);
 	return (moves_down);
 }
 
@@ -55,12 +55,7 @@ void	move_up(t_stack *stack_B, t_node *b_biggest)
 {
 	while (b_biggest->prev != NULL)
 	{
-// printf("MOVE UP ISN'T WORKING\n");
-// printf("biggest->prev->nbr = %i\n", b_biggest->prev->nbr);
 		rb(stack_B);
-check_stack(stack_B);
-		// b_biggest = find_biggest_b(stack_B);
-	exit(-1);
 	}
 }
 
@@ -70,13 +65,18 @@ void	push_biggest_to_a(t_stack *stack_A, t_stack *stack_B)
 	int		down;
 	int		up;
 
-	int len = stack_length(stack_B);
 // printf("entered push biggest to a\n");
 	while (stack_length(stack_B) != 0)
 	{
 
 // printf("stack length b = %i\n", stack_length(stack_B));
 		biggest = find_biggest_b(stack_B);
+// printf("STACK A\n");
+// check_stack(stack_A);
+// printf("STACK B\n");
+// check_stack(stack_B);
+// printf("biggest->nbr = %i\n", biggest->nbr);
+// 	exit(-1);
 		up = calculate_up(stack_B, biggest);
 		down = calculate_down(biggest);
 		if (up >= down)
@@ -88,18 +88,19 @@ void	push_biggest_to_a(t_stack *stack_A, t_stack *stack_B)
 // check_stack(stack_A);
 // printf("STACK B\n");
 // check_stack(stack_B);
-// int hold_len = len;
-// if (len == hold_len - 5)
-// 	exit(-1);
-		len--;
+		// int len = stack_length(stack_B);
+		// int hold_len = len;
+		// if (len == hold_len - 2)
+		// 	exit(-1);
+		// len--;
 	}
 }
 
 void	k_sort(t_stack *stack_A, t_stack *stack_B)
 {
-	int				formula;
-	unsigned int	id;
-	t_node			*iterate;
+	int		formula;
+	int		id;
+	t_node	*iterate;
 
 	id = 0;
 	formula = ((int)square_root(stack_length(stack_A)) * 14 / 10);
@@ -107,11 +108,8 @@ void	k_sort(t_stack *stack_A, t_stack *stack_B)
 	iterate = stack_A->head;
 	while (iterate != NULL)
 	{
-// printf("iterate = %p\n", iterate);
-// printf("iterate->index = %i\n", iterate->index);
 		if (iterate->index <= id)
 		{
-// printf("\titerate->index %i <= id %i\n", iterate->index, id);
 			pb(stack_A, stack_B);
 			rb(stack_B);
 			id++;
@@ -130,9 +128,8 @@ void	k_sort(t_stack *stack_A, t_stack *stack_B)
 			stack_A->head = NULL;
 			iterate = NULL;
 		}
-// printf("stack_a->head = %p\n", stack_A->head);
 	}
-printf("finished k-sort loop\n");
+// printf("finished k-sort loop\n");
 // printf("STACK A\n");
 // check_stack(stack_A);
 // printf("STACK B\n");

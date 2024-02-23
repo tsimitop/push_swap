@@ -11,7 +11,7 @@ typedef struct	t_node
 {
 	// char			*init_inp;
 	int				nbr;
-	unsigned int	index;
+	int				index;
 	int				used;
 	struct t_node	*next;
 	struct t_node	*prev;

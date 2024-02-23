@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 		k_sort(stack_A, stack_B);
 	else
 		sort_3(stack_A);
-check_stack(stack_A);
+// check_stack(stack_A);
 	return (0);
 }
 
