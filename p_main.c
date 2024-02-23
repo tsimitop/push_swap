@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 		k_sort(stack_A, stack_B);
 	else
 		sort_3(stack_A);
+check_stack(stack_A);
 	return (0);
 }
 
@@ -36,9 +37,9 @@ t_stack	*make_index_string(t_stack *stack_A, char **argv)
 		}
 		set_index(stack_A);
 		free(argv_split);
-printf("\nLAST CHECK FOR NODES IN NOT_MAIN\n");
-// check_node(stack_A);
+// printf("\nLAST CHECK FOR NODES IN NOT_MAIN\n");
 // check_stack(stack_A);
-printf("DONE\n");
+// printf("DONE\n");
+// check_node(stack_A);
 	return (stack_A);
 }

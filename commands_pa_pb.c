@@ -12,7 +12,6 @@ void	pa(t_stack *stack_A, t_stack *stack_B)
 {
 	t_node	*move;
 	int len = stack_length(stack_B);
-printf("entered pa\n");
 
 // printf("STACK A\n");
 // check_stack(stack_A);
@@ -57,6 +56,7 @@ void	pb(t_stack *stack_A, t_stack *stack_B)
 	t_node	*last;
 	int		len;
 
+
 	len = stack_length(stack_A);
 	if (!stack_A->head)
 	{
@@ -85,6 +85,5 @@ printf("STACK A is empty!!");
 // check_stack(stack_B);
 	if (len == 1)
 		stack_A->head = NULL;
-
 	write(1, "pb\n", 3);
 }

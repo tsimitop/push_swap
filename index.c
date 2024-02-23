@@ -88,12 +88,12 @@ t_node	*find_biggest_b(t_stack *stack_B)
 	biggest = stack_B->head;
 	iterate = stack_B->head;
 	// value = 0;
-	value = stack_B->head->nbr;
+	value = stack_B->head->index;
 	while (iterate != NULL) //iterate->index == -1 && 
 	{
-		if (value < iterate->nbr)
+		if (value < iterate->index)
 		{
-			value = iterate->nbr;
+			value = iterate->index;
 			biggest = iterate;
 		}
 		iterate = iterate->next;

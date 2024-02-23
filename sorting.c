@@ -7,16 +7,22 @@ int	calculate_up(t_stack *stack_B, t_node *b_biggest)
 
 	moves_up = 0;
 	iterate = b_biggest;
-printf("biggest in calc up = %i\n", b_biggest->nbr);
-printf("iterate->nbr = %i\n", iterate->nbr);
+// printf("STACK B\n");
+// check_stack(stack_B);
+// int hold_len = len;
+// if (len == hold_len - 5)
+// printf("biggest in calc up = %i\n", b_biggest->nbr);
+// printf("iterate->nbr = %i\n", iterate->nbr);
 
 	while (iterate != stack_B->head)
 	{
-printf("iterate->nbr = %i\n", iterate->nbr);
+// printf("iterate->nbr = %i\n", iterate->nbr);
 		iterate = iterate->prev;
 		moves_up++;
 	}
 printf("\tmoves up = % i\n", moves_up);
+	// exit(-1);
+
 	return (moves_up);
 }
 
@@ -49,9 +55,12 @@ void	move_up(t_stack *stack_B, t_node *b_biggest)
 {
 	while (b_biggest->prev != NULL)
 	{
-printf("MOVE UP ISN'T WORKING\n");
-printf("biggest->prev = %p\n", b_biggest->prev);
+// printf("MOVE UP ISN'T WORKING\n");
+// printf("biggest->prev->nbr = %i\n", b_biggest->prev->nbr);
 		rb(stack_B);
+check_stack(stack_B);
+		// b_biggest = find_biggest_b(stack_B);
+	exit(-1);
 	}
 }
 
@@ -94,7 +103,7 @@ void	k_sort(t_stack *stack_A, t_stack *stack_B)
 
 	id = 0;
 	formula = ((int)square_root(stack_length(stack_A)) * 14 / 10);
-printf("formula = %i\n", formula);
+// printf("formula = %i\n", formula);
 	iterate = stack_A->head;
 	while (iterate != NULL)
 	{
