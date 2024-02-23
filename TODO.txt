@@ -28,4 +28,7 @@ important notes
 
 NEXT STEP
 	sort 3 and seven
-	
+
+commands
+	OK pb
+	OK rb

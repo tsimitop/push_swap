@@ -9,11 +9,10 @@ int main(int argc, char **argv)
 		stack_A = make_index_string(stack_A, argv);
 
 	//na ftiakso gia argc > 2
-	// if (stack_length(stack_A > 3))
 // check_node(A_stack);
-
-	k_sort(stack_A, stack_B);
-	// else
+	if (stack_length(stack_A) > 3)
+		k_sort(stack_A, stack_B);
+	else
 		sort_3(stack_A);
 	return (0);
 }
@@ -37,8 +36,9 @@ t_stack	*make_index_string(t_stack *stack_A, char **argv)
 		}
 		set_index(stack_A);
 		free(argv_split);
-printf("\nLAST CHECK FOR NODES IN NOT_MAIN");
-check_node(stack_A);
+printf("\nLAST CHECK FOR NODES IN NOT_MAIN\n");
+// check_node(stack_A);
+// check_stack(stack_A);
 printf("DONE\n");
 	return (stack_A);
 }

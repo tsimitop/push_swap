@@ -89,7 +89,7 @@ t_node	*find_biggest_b(t_stack *stack_B)
 	iterate = stack_B->head;
 	// value = 0;
 	value = stack_B->head->nbr;
-	while (iterate->next != NULL) //iterate->index == -1 && 
+	while (iterate != NULL) //iterate->index == -1 && 
 	{
 		if (value < iterate->nbr)
 		{
@@ -98,8 +98,11 @@ t_node	*find_biggest_b(t_stack *stack_B)
 		}
 		iterate = iterate->next;
 	}
-	biggest->index = 4294967295;
-	biggest->used = 1;
+	// biggest->index = 4294967295;
+	// biggest->used = 1;
+// printf("_____________________________________________________________________\n");
+// printf("biggest = %p\nbiggest->index = %u\nbiggest->nbr = %i\nbiggest->next = %p\nbiggest->prev = %p\n", biggest, biggest->index, biggest->nbr, biggest->next, biggest->prev);
+	// exit(-1);
 	return (biggest);
 }
 
@@ -339,6 +342,7 @@ t_node	*last_node(t_stack *stack_A)
 	last = stack_A->head;
 	while (last->next != NULL)
 		last = last->next;
+// printf("\n\nlast_node = %p\nlast->nbr = %i\nlast->next = %p\nlast->prev = %p\n\n", last, last->nbr, last->next, last->prev);
 	return (last);
 }
 

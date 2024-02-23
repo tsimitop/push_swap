@@ -66,6 +66,7 @@ void	check_stack(t_stack *stack)
 	t_node	*iterate;
 
 	iterate = stack->head;
+	printf("stack->head = %p\n", iterate);
 	while (iterate != NULL)
 	{
 		printf("stack->node = %p\n", iterate);
