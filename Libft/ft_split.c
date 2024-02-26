@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:30:11 by tsimitop          #+#    #+#             */
-/*   Updated: 2023/10/28 13:42:14 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:50:42 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,44 +83,3 @@ static char	**freeing(char **array, int i)
 	free(array);
 	return (NULL);
 }
-
-// #include <stdio.h>
-
-// int main(void)
-// {
-//     char const *s = "This is a test string";
-//     char c = ' ';
-
-//     char **result = ft_split("hello!", ' ');
-//     if (result)
-// 	{
-//         int i = 0;
-//         while (result[i])
-// 		{
-//             printf("%s\n", result[i]);
-//             i++;
-//         }
-//     }
-//     return (0);
-// }
-/*
-in ft count
-if ((s[i] != '\0' && s[i] != c)) || (i == 0) first one creates error,
-second not needed
-*/
-/*
-Turn in files -
-Parameters 			s: The string to be split.
-					c: The delimiter character.
-Return value 		The array of new strings resulting from the split.
-					NULL if the allocation fails.
-External functs. 	malloc, free
-Description 		Allocates (with malloc(3)) and returns an array
-					of strings obtained by splitting ’s’ using the
-					character ’c’ as a delimiter. The array must end
-					with a NULL pointer.
-
-*/
-
-// printf("s[%d] = '%c'\n\n", i, s[i]);							TEST COUNT
-// printf("temp = '%c'\ns[%d] = '%c'\n\n", temp, i, s[i]);		TEST COUNT

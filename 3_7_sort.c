@@ -3,6 +3,7 @@
 void	sort_3(t_stack *stack_A)
 {
 	t_node	*node;
+// printf("_______________ABOVE_3____________\n");
 
 	node = stack_A->head;
 	if (node->index == 0 && node->next->index == 1)

@@ -1,5 +1,51 @@
 #include "push_swap.h"
 
+unsigned int	stack_length(t_stack *stack)
+{
+	t_node	*iterate;
+	int		i;
+
+	i = 0;
+	iterate = stack->head;
+	while (iterate != NULL)
+	{
+		iterate = iterate->next;
+		i++;
+	}
+	return (i);
+}
+
+t_node	*last_node(t_stack *stack_A)
+{
+	t_node	*last;
+
+	last = stack_A->head;
+	while (last->next != NULL)
+		last = last->next;
+	return (last);
+}
+
+t_node	*find_biggest_b(t_stack *stack_B)
+{
+	t_node			*biggest;
+	t_node			*iterate;
+	int				value;
+
+	biggest = stack_B->head;
+	iterate = stack_B->head;
+	value = stack_B->head->index;
+	while (iterate != NULL)
+	{
+		if (value < iterate->index)
+		{
+			value = iterate->index;
+			biggest = iterate;
+		}
+		iterate = iterate->next;
+	}
+	return (biggest);
+}
+
 // t_node	*find_smallest(t_stack *stack_A)
 // {
 // 	t_node		*smallest;
@@ -74,26 +120,6 @@
 // 	return (biggest);
 // }
 
-t_node	*find_biggest_b(t_stack *stack_B)
-{
-	t_node			*biggest;
-	t_node			*iterate;
-	int				value;
-
-	biggest = stack_B->head;
-	iterate = stack_B->head;
-	value = stack_B->head->index;
-	while (iterate != NULL)
-	{
-		if (value < iterate->index)
-		{
-			value = iterate->index;
-			biggest = iterate;
-		}
-		iterate = iterate->next;
-	}
-	return (biggest);
-}
 
 // int	if_used(t_stack *stack_A)
 // {
@@ -139,31 +165,3 @@ t_node	*find_biggest_b(t_stack *stack_B)
 // 		return (0);
 // }
 
-unsigned int	stack_length(t_stack *stack)
-{
-	t_node			*iterate;
-	unsigned int	ui;
-	t_node			*debugg = stack->head;
-	ui = 0;
-	iterate = stack->head;
-	while (iterate != NULL)
-	{
-		iterate = iterate->next;
-		ui++;
-		debugg = debugg->next;
-	}
-	return (ui);
-}
-
-
-
-t_node	*last_node(t_stack *stack_A)
-{
-	t_node	*last;
-
-	last = stack_A->head;
-	while (last->next != NULL)
-		last = last->next;
-// printf("\n\nlast_node = %p\nlast->nbr = %i\nlast->next = %p\nlast->prev = %p\n\n", last, last->nbr, last->next, last->prev);
-	return (last);
-}

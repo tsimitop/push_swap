@@ -6,6 +6,7 @@ t_stack	*initialise_stack(t_stack *stack, char *argv_split)
 	t_node	*iterate;
 	t_node	*new;
 	int		digit;
+// printf("_______________INIT STACK____________\n");
 
 	iterate = stack->head;
 	digit = ft_atoi(argv_split);

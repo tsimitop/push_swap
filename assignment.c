@@ -10,7 +10,7 @@ void	set_index(t_stack *stack_A)
 	copied_array = copy_array(stack_A, length);
 	sorted_array = sort_array(copied_array, length);
 	array_to_index(sorted_array, stack_A, length);
-	// check_node(stack_A);
+	free(sorted_array);
 }
 
 void	array_to_index(int *arr_sort, t_stack *stack_A, int	length)
@@ -30,7 +30,6 @@ void	array_to_index(int *arr_sort, t_stack *stack_A, int	length)
 			i++;
 			length--;
 		}
-// printf("\t\t\ti = %i\n\t\t\tarr_sort[i] = %i\n\t\t\titerate->nbr = %i\n", i, arr_sort[i], iterate->nbr);
 		if (arr_sort[i] == iterate->nbr)
 		{
 			iterate->index = i;
@@ -43,10 +42,8 @@ void	array_to_index(int *arr_sort, t_stack *stack_A, int	length)
 int	*copy_array(t_stack *stack_A, int length)
 {
 	t_node	*iterate;
-	// int i;
 	int	*array;
 
-	// i = 0;
 	array = ft_calloc(length + 1, sizeof(int));				//FREE!!!
 	if (!array)
 		return (NULL);
@@ -63,13 +60,9 @@ int	*copy_array(t_stack *stack_A, int length)
 int	*sort_array(int *array, int length)
 {
 	int *sorted_array;
-	// char* str = "simple_array";
 	int		mem_length;
 
 	mem_length = length;
-// printf("simple_array\n_____\n %i  %i \n_____\n", array[0], array[1]);
-// print_array(array, str);
-
 	sorted_array = ft_calloc(length + 1, sizeof(int));		//FREE!!!
 	if (sorted_array == NULL)
 		return (NULL);
@@ -112,14 +105,6 @@ int	*bubble_sort(int *sorted_array, int length)
 		}
 		i++;
 	}
-// char *str = "sorted array";
-// printf("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
-// print_array(sorted_array, str);
-// printf("\nsorted_array[0] = %i\n", sorted_array[0]);
-// printf("sorted_array[1] = %i\n", sorted_array[1]);
-// printf("sorted_array[2] = %i\n", sorted_array[2]);
-// printf("sorted_array[3] = %i\n", sorted_array[3]);
-
 	return (sorted_array);
 }
 

@@ -40,8 +40,6 @@ The first element becomes the last one.						CORRECT
 */
 void	rb(t_stack *stack_B)
 {
-// printf("__________________________________________________________________\n");
-
 	t_node	*last;
 	t_node	*first;
 	t_node	*second;
@@ -56,10 +54,7 @@ void	rb(t_stack *stack_B)
 		first->next = NULL;
 		second->prev = NULL;
 		stack_B->head =  second;
-// printf("__________________________________________________________________\n");
-// check_stack(stack_B);
 		write(1, "rb\n", 3);
-
 	}
 }
 

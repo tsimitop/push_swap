@@ -36,24 +36,24 @@ void	rra(t_stack *stack_A)
 rrb (reverse rotate b): Shift down all elements of stack b by 1.
 The last element becomes the first one.
 */
-void	rrb(t_stack *stack_B)
-{
-	t_node	*temp;
-	t_node	*last;
+// void	rrb(t_stack *stack_B)
+// {
+// 	t_node	*temp;
+// 	t_node	*last;
 
-	temp = stack_B->head;
-	last = NULL;
-	while (temp->next != NULL)
-	{
-		last = temp;
-		temp = temp->next;
-	}
-	last->next = NULL;
-	temp->next = stack_B->head;
-	stack_B->head->prev = NULL;
-	stack_B->head = temp;
-    write(1, "rrb\n", 4);
-}
+// 	temp = stack_B->head;
+// 	last = NULL;
+// 	while (temp->next != NULL)
+// 	{
+// 		last = temp;
+// 		temp = temp->next;
+// 	}
+// 	last->next = NULL;
+// 	temp->next = stack_B->head;
+// 	stack_B->head->prev = NULL;
+// 	stack_B->head = temp;
+// 	write(1, "rrb\n", 4);
+// }
 
 ////////////////////////////////////////////////////////////////////////////////
 ////							BOTH STACKS									////
@@ -72,44 +72,32 @@ void	rrr(t_stack *stack_A, t_stack *stack_B)
 
 
 // POSSIBLY RRB
-// void	rb(t_stack *stack_B)
-// {
-// printf("__________________________________________________________________\n");
-
-// 	t_node	*temp;
-// 	t_node	*last;
-// 	t_node	*end;
-// 	temp = stack_B->head;
-// 	last = NULL;
-// 	while (temp && temp->next != NULL)
-// 	{
-// 		last = temp;
-// 		temp = temp->next;
-// 	}
-// 	// temp->next = NULL;
-// 	if (temp)
-// 	{
-// // printf("enter rb, fix problem\n");
-// 		temp->prev = NULL;
-// 		temp->next = stack_B->head;
-// 		last->next = NULL;
-// // printf("TEST\n");
-// // check_stack(stack_B);
-// 	}
-// 	else
-// 		temp = stack_B->head;
-// 	// temp->next = stack_B->head;
-// 	if (stack_B->head)
-// 	{
-// 		// stack_B->head = stack_B->head->next;
-// 		stack_B->head->prev = temp; //if (stack_A->head != NULL)
-// 		stack_B->head = temp;
-// // printf("HEY rb\nHEY\n");
-// 		end = last_node(stack_B);
-// 		end->next = NULL;
-// 	}
-// printf("__________________________________________________________________\n");
-// check_stack(stack_B);
-
-// 	write(1, "rb\n", 3);
-// }
+void	rrb(t_stack *stack_B)
+{
+	t_node	*temp;
+	t_node	*last;
+	t_node	*end;
+	temp = stack_B->head;
+	last = NULL;
+	while (temp && temp->next != NULL)
+	{
+		last = temp;
+		temp = temp->next;
+	}
+	if (temp)
+	{
+		temp->prev = NULL;
+		temp->next = stack_B->head;
+		last->next = NULL;
+	}
+	else
+		temp = stack_B->head;
+	if (stack_B->head)
+	{
+		stack_B->head->prev = temp; //if (stack_A->head != NULL)
+		stack_B->head = temp;
+		end = last_node(stack_B);
+		end->next = NULL;
+	}
+	write(1, "rrb\n", 4);
+}

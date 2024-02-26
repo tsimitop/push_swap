@@ -27,10 +27,13 @@ typedef struct	t_stack
 // void	delete_tmp(void *tmp);
 // void	ft_ps_delone(t_node *lst, void (*del)(void*));
 t_stack	*make_index_string(t_stack *A_stack, char **argv);
+t_stack	*make_index_string_above_3(t_stack *stack_A, int argc, char **argv);
 t_stack	*initialise_stack(t_stack *stack, char *argv_split);
 char	space(char *str);
 int		check_int(char *str);
 int		check_dup(char **argv_split);
+int		check_limits(char *str);
+void	*free_split(char **str, int i);
 
 
 /*commands*/
