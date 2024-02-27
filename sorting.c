@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 16:51:29 by tsimitop          #+#    #+#             */
+/*   Updated: 2024/02/27 16:51:32 by tsimitop         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	calculate_up(t_stack *stack_B, t_node *b_biggest)
@@ -137,6 +149,5 @@ void	k_sort(t_stack *stack_A, t_stack *stack_B)
 // printf("STACK B\n");
 // check_stack(stack_B);
 // exit(-1);
-
 	push_biggest_to_a(stack_A, stack_B); //other function;
 }

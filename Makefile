@@ -28,7 +28,8 @@ SRC =	p_main.c\
 		sorting.c\
 		square_root.c\
 		assignment.c\
-		3_7_sort.c
+		3_7_sort.c\
+		frees.c
 
 OBJ = $(SRC:.c=.o)
 

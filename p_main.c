@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   p_main.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 16:50:15 by tsimitop          #+#    #+#             */
+/*   Updated: 2024/02/27 16:58:07 by tsimitop         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int main(int argc, char **argv)
@@ -19,8 +31,8 @@ int main(int argc, char **argv)
 	}
 // printf("FINAL STACK A\n");
 // check_stack(stack_A);
-// free(stack_A); //create free_stack function to del each node
-// free(stack_B);
+free(stack_A); //create free_stack function to del each node
+free(stack_B);
 	return (0);
 }
 
@@ -46,8 +58,8 @@ t_stack	*make_index_string(t_stack *stack_A, char **argv)
 	set_index(stack_A);
 	free_split(argv_split, i);
 	free(argv_split); //double free???
-// printf("\nLAST CHECK FOR NODES IN NOT_MAIN\n");
-// check_stack(stack_A);
+printf("\nLAST CHECK FOR NODES IN NOT_MAIN\n");
+check_stack(stack_A);
 // printf("DONE\n");
 // check_node(stack_A);
 	return (stack_A);
@@ -57,7 +69,6 @@ t_stack	*make_index_string_above_3(t_stack *stack_A, int argc, char **argv)
 {
 	int		i;
 	char	**argv_split;
-
 	i = 0;
 	argv_split = ft_calloc(argc+1, sizeof(char *));
 	while (i < argc)
@@ -78,15 +89,16 @@ t_stack	*make_index_string_above_3(t_stack *stack_A, int argc, char **argv)
 		if (check_int(argv_split[i]) == 0 && check_dup(argv_split) == 0 && check_limits(argv_split[i]) == 0)
 		{
 			stack_A = initialise_stack(stack_A, argv_split[i]);
-
 		}
 		else
 			return (NULL); //exit (-1);				//handle errors && leaks
 		i++;
 	}
 	set_index(stack_A);
-	free_split(argv_split, i);
-	free(argv_split); //double free???
+	// if (argv_split[i - 1])
+	// 	free_split(argv_split, i);
+	if (argv_split)
+		free(argv_split); //double free???
 	return (stack_A);
 }
 

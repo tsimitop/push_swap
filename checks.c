@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checks.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 16:50:02 by tsimitop          #+#    #+#             */
+/*   Updated: 2024/02/27 16:50:08 by tsimitop         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 //turns tabs of argv into spaces
@@ -23,6 +35,8 @@ int	check_int(char *str)
 
 	i = 0;
 	ret_val = -1;
+	if (str[0] == '-')
+		i = 1;
 	while (str[i] != '\0' && ret_val != 1)
 	{
 		if (str[i] >= '0' && str[i] <= '9')
@@ -124,16 +138,5 @@ int	check_limits(char *str)
 		}
 	}
 	// printf("LIMITS???\n");
-	return (0);
-}
-
-
-void	*free_split(char **str, int i)
-{
-	while (i - 1 > 0)
-	{
-		free(str[i]);		// fix it
-		i--;
-	}
 	return (0);
 }

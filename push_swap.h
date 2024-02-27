@@ -33,7 +33,6 @@ char	space(char *str);
 int		check_int(char *str);
 int		check_dup(char **argv_split);
 int		check_limits(char *str);
-void	*free_split(char **str, int i);
 
 
 /*commands*/
@@ -96,6 +95,12 @@ void	move_up(t_stack *stack_B, t_node *b_biggest);
 void	push_biggest_to_a(t_stack *stack_A, t_stack *stack_B);
 void	k_sort(t_stack *stack_A, t_stack *stack_B);
 void	sort_3(t_stack *stack_A);
+
+
+/*free*/
+void	del_content(int *content);
+void	free_stack(t_stack *stack, void (*del)(void*));
+void	*free_split(char **str, int i);
 
 
 /*extras*/

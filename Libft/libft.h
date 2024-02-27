@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:51:38 by tsimitop          #+#    #+#             */
-/*   Updated: 2023/11/24 14:00:27 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:56:52 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_putnbr_fd(int n, int fd);
 
 /*BONUS list functions & node representation*/
 
-typedef struct	t_list
+typedef struct t_list
 {
 	void			*content;
 	struct t_list	*next;

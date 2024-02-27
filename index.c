@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   index.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 16:51:07 by tsimitop          #+#    #+#             */
+/*   Updated: 2024/02/27 16:51:09 by tsimitop         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 unsigned int	stack_length(t_stack *stack)
@@ -27,9 +39,9 @@ t_node	*last_node(t_stack *stack_A)
 
 t_node	*find_biggest_b(t_stack *stack_B)
 {
-	t_node			*biggest;
-	t_node			*iterate;
-	int				value;
+	t_node	*biggest;
+	t_node	*iterate;
+	int		value;
 
 	biggest = stack_B->head;
 	iterate = stack_B->head;

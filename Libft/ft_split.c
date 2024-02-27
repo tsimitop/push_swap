@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:30:11 by tsimitop          #+#    #+#             */
-/*   Updated: 2024/02/26 15:50:42 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:26:21 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	**ft_split(char const *s, char c)
 {
 	char	**array;
 
+	if (!s || !c)
+		return (NULL);
 	array = (char **)ft_calloc(ft_count(s, c) + 1, sizeof(char *));
 	if (!array)
 		return (NULL);
@@ -78,7 +80,7 @@ static char	**freeing(char **array, int i)
 	while (array[i > 0])
 	{
 		i--;
-		free(array[i - 1]);
+		free(array[i]);
 	}
 	free(array);
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 19:47:07 by tsimitop          #+#    #+#             */
-/*   Updated: 2023/10/28 13:43:01 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:25:45 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	len_create;
 	size_t	len_s;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	len_s = ft_strlen(s);
 	if (start >= len_s)
