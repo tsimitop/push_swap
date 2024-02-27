@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:50:15 by tsimitop          #+#    #+#             */
-/*   Updated: 2024/02/27 16:58:07 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:11:35 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,21 @@
 int main(int argc, char **argv)
 {
 	t_stack *stack_A = (t_stack *)ft_calloc(argc + 1, sizeof(t_node));
+	if (!stack_A)
+		return (0);
 	t_stack *stack_B = (t_stack *)ft_calloc(argc + 1, sizeof(t_node));
+	if (!stack_B)
+		return (0);
 	if (argc == 2)
 		stack_A = make_index_string(stack_A, argv);
 	else if (argc > 2)
 		stack_A = make_index_string_above_3(stack_A, argc, argv);
+	if (!stack_A)
+	{
+		free(stack_A);
+		free(stack_B);
+		return (0);
+	}
 	if (stack_length(stack_A) && stack_length(stack_A) > 3)
 		k_sort(stack_A, stack_B);
 	else if (stack_length(stack_A) == 3)
@@ -29,7 +39,7 @@ int main(int argc, char **argv)
 		if (stack_A->head->nbr > stack_A->head->next->nbr)
 			sa(stack_A);
 	}
-// printf("FINAL STACK A\n");
+// printf("FINAL STACK A\n"); //___________________________________________________
 // check_stack(stack_A);
 free(stack_A); //create free_stack function to del each node
 free(stack_B);
@@ -50,16 +60,22 @@ t_stack	*make_index_string(t_stack *stack_A, char **argv)
 		{
 
 			stack_A = initialise_stack(stack_A, argv_split[i]);
+			if (!stack_A)
+				return (NULL);
 		}
 		else
+		{
+			// free_split(argv_split, i);
+			// free(argv_split);
 			return (NULL); //exit (-1);				//handle errors
+		}
 		i++;
 	}
 	set_index(stack_A);
 	free_split(argv_split, i);
 	free(argv_split); //double free???
-printf("\nLAST CHECK FOR NODES IN NOT_MAIN\n");
-check_stack(stack_A);
+// printf("\nLAST CHECK FOR NODES IN NOT_MAIN\n");
+// check_stack(stack_A);
 // printf("DONE\n");
 // check_node(stack_A);
 	return (stack_A);
@@ -89,9 +105,15 @@ t_stack	*make_index_string_above_3(t_stack *stack_A, int argc, char **argv)
 		if (check_int(argv_split[i]) == 0 && check_dup(argv_split) == 0 && check_limits(argv_split[i]) == 0)
 		{
 			stack_A = initialise_stack(stack_A, argv_split[i]);
+			if (!stack_A)
+				return (NULL);
 		}
 		else
-			return (NULL); //exit (-1);				//handle errors && leaks
+		{
+			// free_split(argv_split, i);
+			// free(argv_split); //useless??????
+			return (NULL); //exit (-1);				//handle errors
+		} //exit (-1);				//handle errors && leaks
 		i++;
 	}
 	set_index(stack_A);
@@ -101,9 +123,3 @@ t_stack	*make_index_string_above_3(t_stack *stack_A, int argc, char **argv)
 		free(argv_split); //double free???
 	return (stack_A);
 }
-
-
-/*
-[push swap]
-Hi everyone, do you have any advice? I have a checking function at the end of my program that shows each nodes index, number and some addresses. The function seems to display that everything is sorted but the vizualizer sometimes displays that it is (with fewer numbers) and sometimes that it isn't...*/
-

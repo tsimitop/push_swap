@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:50:30 by tsimitop          #+#    #+#             */
-/*   Updated: 2024/02/27 16:50:32 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:21:33 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	set_index(t_stack *stack_A)
 
 	length = stack_length(stack_A);
 	copied_array = copy_array(stack_A, length);
+	if (!copied_array)
+		return ;
 	sorted_array = sort_array(copied_array, length);
+	if (!sorted_array)
+		return ;
 	array_to_index(sorted_array, stack_A, length);
 	free(sorted_array);
 }

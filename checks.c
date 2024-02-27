@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:50:02 by tsimitop          #+#    #+#             */
-/*   Updated: 2024/02/27 16:50:08 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:48:39 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	check_stack(t_stack *stack)
 		printf("stack->node->nbr = %i\n", iterate->nbr);
 		printf("stack->node->next = %p\n", iterate->next);
 		printf("stack->node->prev = %p\n", iterate->prev);
+		printf("\n");
 		iterate = iterate->next;
 	}
 }
