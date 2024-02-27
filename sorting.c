@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:51:29 by tsimitop          #+#    #+#             */
-/*   Updated: 2024/02/27 16:51:32 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:05:53 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,12 @@ void	push_biggest_to_a(t_stack *stack_A, t_stack *stack_B)
 // printf("STACK B\n");
 // check_stack(stack_B);
 // printf("biggest->nbr = %i\n", biggest->nbr);
-// 	exit(-1);
+	// exit(-1);
 		up = calculate_up(stack_B, biggest);
 		down = calculate_down(biggest);
 		if (up > down)
 			move_down(stack_B, biggest);
-		else
+		else if (up <= down && up != 0)
 			move_up(stack_B, biggest);
 		pa(stack_A, stack_B);
 // printf("STACK A\n");
@@ -116,6 +116,11 @@ void	k_sort(t_stack *stack_A, t_stack *stack_B)
 	int		id;
 	t_node	*iterate;
 
+// printf("STACK A\n");
+// check_stack(stack_A);
+// printf("STACK B\n");
+// check_stack(stack_B);
+// exit(-1);
 	id = 0;
 	formula = ((int)square_root(stack_length(stack_A)) * 14 / 10);
 // printf("formula = %i\n", formula);
@@ -142,6 +147,9 @@ void	k_sort(t_stack *stack_A, t_stack *stack_B)
 			stack_A->head = NULL;
 			iterate = NULL;
 		}
+// printf("STACK A\n");
+// check_stack(stack_A);
+// exit(-1);
 	}
 // printf("finished k-sort loop\n");
 // printf("STACK A\n");

@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:50:45 by tsimitop          #+#    #+#             */
-/*   Updated: 2024/02/27 16:50:47 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:55:12 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,45 @@ The first element becomes the last one.
 */
 void	ra(t_stack *stack_A)
 {
-	t_node	*temp;
 	t_node	*last;
+	t_node	*first;
+	t_node	*second;
 
-	temp = stack_A->head;
-	last = NULL;
-	while (temp->next != NULL)
+	if (stack_A->head != NULL && stack_A->head->next != NULL)
 	{
-		last = temp;
-		temp = temp->next;
+		last = last_node(stack_A);
+		second = stack_A->head->next;
+		first = stack_A->head;
+		last->next = first;
+		first->prev = last;
+		first->next = NULL;
+		second->prev = NULL;
+		stack_A->head =  second;
+		write(1, "ra\n", 3);
 	}
-	last->next = NULL;
-	temp->prev = NULL;
-	temp->next = stack_A->head;
-	stack_A->head = stack_A->head->next;
-	stack_A->head->prev = temp; //if (stack_A->head != NULL)
-	stack_A->head = temp;
-	write(1, "ra\n", 3);
 }
+// void	ra(t_stack *stack_A)
+// {
+// 	t_node	*temp;
+// 	t_node	*last;
+
+// 	temp = stack_A->head;
+// 	last = NULL;
+// 	while (temp->next != NULL)
+// 	{
+// 		last = temp;
+// 		temp = temp->next;
+// 	}
+// 	last->next = NULL;
+// 	temp->prev = NULL;
+// 	temp->next = stack_A->head;
+// 	stack_A->head = stack_A->head->next;
+// 	stack_A->head->prev = temp; //if (stack_A->head != NULL)
+// 	stack_A->head = temp;
+// 	write(1, "ra\n", 3);
+// }
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 ////								STACK_B									////
