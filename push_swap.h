@@ -5,6 +5,8 @@
 // # include "/Users/tsimitop/Documents/Testing/PUSH/Libft/libft.h"
 # include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
 
 /*struct nodes*/
 typedef struct	t_node
@@ -27,10 +29,11 @@ typedef struct	t_stack
 // void	delete_tmp(void *tmp);
 // void	ft_ps_delone(t_node *lst, void (*del)(void*));
 t_stack	*make_index_string(t_stack *A_stack, char **argv);
-t_stack	*make_index_string_above_3(t_stack *stack_A, int argc, char **argv);
+t_stack	*initialize_without_quotes(t_stack *stack_A, int argc, char **argv);
 t_stack	*initialise_stack(t_stack *stack, char *argv_split);
 char	space(char *str);
-int		check_int(char *str);
+// int		check_int(char *str);
+int		check_int(char *str, char **argv_split);
 int		check_dup(char **argv_split);
 int		check_limits(char *str);
 
@@ -98,14 +101,27 @@ void	sort_3(t_stack *stack_A);
 
 
 /*free*/
-void	del_content(int *content);
-void	free_stack(t_stack *stack, void (*del)(void*));
-void	*free_split(char **str, int i);
+// void	del_content(int *content);
+// void	free_stack(t_stack *stack, void (*del)(void*));
+void	free_stack2(t_stack *stack);
+void	free_stack(t_stack *stack);
+void	free_split(char **str);
+void	ft_exit(char *msg, int exit_value, char **argv_split);
 
 
 /*extras*/
 void check_node(t_stack *stack_A);
 void	check_stack(t_stack *stack);
+
+/*new*/
+void	ft_check_if_int(char *str, char **argv_split);
+void	check_if_dup(char **argv_split);
+void	ft_check_limits(char *str, char **argv_split);
+void	ft_parse_input(char **argv);
+void	check_leaks(void);
+t_stack	*ft_initialize_stackA(t_stack *stack_A, char **argv);
+char	**ft_parse_input_with_quotes(char **argv, int argc); //it starts with the argv[0]
+
 
 
 

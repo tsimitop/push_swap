@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_main.c                                           :+:      :+:    :+:   */
+/*   experiment_main.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:50:15 by tsimitop          #+#    #+#             */
-/*   Updated: 2024/03/02 16:05:02 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/03/02 19:09:53 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int main(int argc, char **argv)
 {
 	t_stack stack_A;
 	t_stack stack_B;
-	
+
+	if (argc < 2)
+		return (0);
+	// atexit(check_leaks);
 	// t_stack *stack_A = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	// if (!stack_A)
 	// 	return (0);
@@ -25,12 +28,22 @@ int main(int argc, char **argv)
 	// if (!stack_B)
 	// 	return (0);
 	// stack_B->head = NULL;
-	ft_parse_input(argv);
-
 	if (argc == 2)
-		make_index_string(&stack_A, argv);
-	else if (argc > 2)
-		make_index_string_above_3(&stack_A, argc, argv);
+	{
+		ft_parse_input(argv);
+		ft_initialize_stackA(&stack_A, argv);
+	}
+	char **argv_split;
+	if (argc > 2)
+	{
+		argv_split = ft_parse_input_with_quotes(argv, argc);
+		ft_initialize_stackA(&stack_A, argv_split);
+	}
+	// printf("hello after parse call\n\n");
+	// if (argc == 2)
+	// 	make_index_string(&stack_A, argv);
+	// else if (argc > 2)
+	// 	make_index_string_above_3(&stack_A, argc, argv);
 	// if (!stack_A)
 	// {
 	// 	free(stack_A);
@@ -53,52 +66,7 @@ free_stack2(&stack_B);
 	return (0);
 }
 
-void ft_exit(char *msg, int exit_value, void *to_free)
-{
-	ft_putendl_fd(msg, 2);
-	free(to_free);
-	exit(exit_value);
-}
-
-
-t_stack	*make_index_string(t_stack *stack_A, char **argv)
-{
-	int		i;
-	char	**argv_split;
-
-	i = 0;
-	// *argv[1] = space(argv[1]);
-	argv_split = ft_split(argv[1], ' ');
-	while (argv_split[i])
-	{
-		check_int(argv_split[i], argv_split);
-		printf("test1\n");
-		if (check_int(argv_split[i], argv_split) == 0 && check_dup(argv_split) == 0 && check_limits(argv_split[i]) == 0)
-		{
-
-			stack_A = initialise_stack(stack_A, argv_split[i]);
-			if (!stack_A)
-				return (NULL);
-		}
-		else
-		{
-			// free_split(argv_split, i);
-			// free(argv_split);
-			return (free_split(argv_split), NULL); //exit (-1);				//handle errors
-		}
-		i++;
-	}
-	set_index(stack_A);
-	free_split(argv_split);
-	// free(argv_split); //double free???
-// printf("\nLAST CHECK FOR NODES IN NOT_MAIN\n");
-// check_stack(stack_A);
-// printf("DONE\n");
-// check_node(st ack_A);
-	return (stack_A);
-}
-
-t_stack	*make_index_string_above_3(t_stack *stack_A, int argc, char **argv)
+t_stack	*initialize_without_quotes(t_stack *stack_A, int argc, char **argv)
 {
 	int		i;
 	char	**argv_split;
@@ -107,13 +75,6 @@ t_stack	*make_index_string_above_3(t_stack *stack_A, int argc, char **argv)
 	while (i < argc)
 	{
 		argv_split[i] = argv[i + 1];
-		i++;
-	}
-	i = 0;
-	while (argc > 1)		//elegxei sosta? handle errors
-	{
-		argv_split[i] = argv[i + 1];
-		argc--;
 		i++;
 	}
 	i = 0;

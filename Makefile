@@ -17,7 +17,7 @@ vpath %.h $(LIBFT_PATH) .
 
 NAME = push_swap
 
-SRC =	p_main.c\
+SRC =	experiment_main.c\
 		checks.c\
 		commands_pa_pb.c\
 		commands_sa_sb_ss.c\
@@ -29,7 +29,8 @@ SRC =	p_main.c\
 		square_root.c\
 		assignment.c\
 		3_sort.c\
-		frees.c
+		frees.c\
+		new.c
 
 OBJ = $(SRC:.c=.o)
 

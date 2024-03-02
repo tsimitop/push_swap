@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:50:30 by tsimitop          #+#    #+#             */
-/*   Updated: 2024/02/27 17:21:33 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:44:17 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	set_index(t_stack *stack_A)
 		return ;
 	array_to_index(sorted_array, stack_A, length);
 	free(sorted_array);
+	free(copied_array);
 }
 
 void	array_to_index(int *arr_sort, t_stack *stack_A, int	length)
@@ -88,7 +89,7 @@ int	*sort_array(int *array, int length)
 		length--;
 	}
 	sorted_array = bubble_sort(sorted_array, mem_length);
-	free(array);
+
 	return (sorted_array);
 }
 
@@ -127,6 +128,8 @@ int	*bubble_sort(int *sorted_array, int length)
 
 void	print_array(int *array, char* str) //DELETE FUNCTION
 {
+	
+	
 	int i = 0;
 
 	while (array[i] != 0)

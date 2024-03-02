@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:50:02 by tsimitop          #+#    #+#             */
-/*   Updated: 2024/02/27 17:48:39 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/03/02 17:00:44 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	space(char *str)
 }
 
 //checks if string is an int
-int	check_int(char *str)
+int	check_int(char *str, char **argv_split)
 {
 	int	i;
 	int	ret_val;
@@ -42,7 +42,11 @@ int	check_int(char *str)
 		if (str[i] >= '0' && str[i] <= '9')
 			ret_val = 0;
 		else
-			ret_val = 1;
+		{
+			free_split(argv_split);
+			ft_exit("Error: not all arguments are ints", 0, NULL);
+		}
+			// ret_val = 1;
 		i++;
 	}
 	if (ret_val == 1)
@@ -116,11 +120,11 @@ int	check_limits(char *str)
 
 	if (len > 10)
 	{
-		if (check_int(str) == 0)
-		{
+		// if (check_int(str) == 0)
+		// {
 			if (str[0] == '-')
 			{
-				if (ft_strlen(str) > 11 || ft_strncmp(str, "-2147483648", 10) > 0)
+				if (ft_strlen(str) > 11 || ft_strncmp(str, "-2147483647", 10) > 0)
 				{
 					write (1, "Error: not within int limits\n", 1);
 					return (1);
@@ -128,7 +132,7 @@ int	check_limits(char *str)
 				// else if (ft_strncmp(str, "-2147483648", 10) > 0)
 				// 	write (1, "Error: not within int limits\n", 29);
 			}
-			else if (ft_strlen(str) > 10 || ft_strncmp(str, "2147483648", 10) > 0)
+			else if (ft_strlen(str) > 10 || ft_strncmp(str, "2147483648", 10) > 0) /// do for +
 			{
 				// if (ft_strlen(str) > 10)
 				// 	write (1, "Error: not within int limits\n", 1);
@@ -136,7 +140,7 @@ int	check_limits(char *str)
 					write (1, "Error: not within int limits\n", 29);
 					return (1);
 			}
-		}
+		// }
 	}
 	// printf("LIMITS???\n");
 	return (0);

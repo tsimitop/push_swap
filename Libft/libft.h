@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 18:51:38 by tsimitop          #+#    #+#             */
-/*   Updated: 2024/02/27 14:56:52 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/03/02 18:04:22 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 
 /*to functions*/
 
-int		ft_toupper(int c);
-int		ft_tolower(int c);
-int		ft_atoi(const char *str);
-char	*ft_itoa(int n);
+int			ft_toupper(int c);
+int			ft_tolower(int c);
+int			ft_atoi(const char *str);
+char		*ft_itoa(int n);
+long long	ft_atoll(const char *str);
 
 /*string functions*/
 
