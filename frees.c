@@ -6,7 +6,7 @@
 /*   By: tsimitop <tsimitop@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 16:48:22 by tsimitop          #+#    #+#             */
-/*   Updated: 2024/03/02 18:44:27 by tsimitop         ###   ########.fr       */
+/*   Updated: 2024/03/02 19:14:52 by tsimitop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ void free_stack2(t_stack *stack)
 	}
 }
 
-void	ft_exit(char *msg, int exit_value, char **argv_split)
-{
-	ft_putendl_fd(msg, 2);
-	free_split(argv_split);
-	exit(exit_value);
-}
+// void	ft_exit(char *msg, int exit_value, char **argv_split)
+// {
+// 	ft_putendl_fd(msg, 2);
+// 	free_split(argv_split);
+// 	exit(exit_value);
+// }
 
