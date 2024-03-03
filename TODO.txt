@@ -33,66 +33,6 @@ commands
 	OK rb
 
 
-INPUT
-OK
-	works with "4 67 3 87 23"
+EXIT
+	check exit values
 
-KO
-	3 2 1 0
-	doesn't work with "3 2 1 0 5 9"
-	132 119 -259 160
-	132 119 -259
-	132 119 -259 160 -69 312
-ARG=""; ./push_swap $ARG | ./checker_Mac $ARG
-3 2 1 0
-ra
-pb
-pb
-pb
-rb
-pb
-rb
-pa
-rb
-pa
-pa
-pa
-
-a = 2103
-b = 
-
-a = 103
-b = 2
-
-a = 03
-b = 12
-
-a = 3
-b = 012
-
-a = 3
-b = 120
-
-a = 
-b = 3120
-
-a = 
-b = 1203
-
-a = 1
-b = 203
-
-a = 1
-b = 032
-
-a = 01
-b = 32
-
-
-a = 301
-b = 2
-
-a = 2301
-b =
-
-check push biggest to a
