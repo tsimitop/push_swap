@@ -1,8 +1,0 @@
-find smallest index
-	send to B
-find next larger and next next larger index
-	which is closer send to B
-	if second is sent remember first and check for next
-	send closest to B
-	if closest not first send first to B
-	remember to rotate b so it forms a K
